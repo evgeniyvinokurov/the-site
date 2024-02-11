@@ -1,18 +1,25 @@
 # xmla v0.3.0
   
-Xml based bottle python shop, proof of concept  
+Магазин на xml, минимальный прототип проекта  
+Python 3 и Bottle.py, чистый джаваскрипт  
   
-* /catalog/ - catalog page  
-* /catalog/in/ - import page, with fields mappings  
+* /catalog/ - страница каталога  
+* /catalog/in/ - страница импорта с мэппингом полей  
 
-folder structure:  
-  
+структура проекта:  
 +-xmla
----codes/xmla - folder for xmled python scripts  
----views - folder for Bottle templates  
----static - folder for static to load by server (js, pics, css, graphics)  
----js-src - folder for frontend development  
----xml - folder for xml files  
----imports - folder to load import  
----tests - tests with selenium  
----for tests - files to use with imports  
+---codes/xmla - скрипты на питоне  
+---views - шаблоны bottle.py  
+---static - статика  
+---js-src - исходники фронтенда  
+---xml - файлы xml  
+---imports - каталог для импорта  
+---tests - тесты на селениуме    
+---for tests - файлы импорта товаров с картинками (тестовые)
+    
+Проект может работать с докер:  
+--исправить index.py (порты)   
+--sudo docker build -t xmla .  
+--sudo docker run -p 8000:8000 -d xmla  
+или  
+docker compose up  

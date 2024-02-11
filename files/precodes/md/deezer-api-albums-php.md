@@ -1,8 +1,7 @@
 #deezer-api-albums  
+Парсер апи deezer на SQLite3, только php, без js
   
-js free, php and html manager of artist albums from deezer, and SQLite3  
-  
-**/albums/list.php - list of parsed albums of artists  
-**/albums/listtolisten.php - list of managed albums of artists  
-**/albums/listtracks.php?album=<id> - list of managed tracks of album  
-**/albums/index.html - search for an artists  
+**/albums/list.php - альбомы исполнителей из бд  
+**/albums/listtolisten.php - избранные альбомы  
+**/albums/listtracks.php?album=id - треки альбомов из бд  
+**/albums/index.html - поиск альбомов артистов   

@@ -1,6 +1,6 @@
 # get-your-song v0.1.0
   
-Get your song by salted text and 8 ball  
+Плейлист по тексту-соли случайным образом  
   
-Checks up list of 500 greatest songs  
-Makes play lists, based on text salts and 8 ball randomness  
+Использует лучшие 500 песен мира из википедии   
+Создает плейлисты на базе случайных алгоритмов аналога 8шар и текста-соли  

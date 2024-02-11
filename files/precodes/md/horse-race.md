@@ -1,9 +1,9 @@
 # horse-race v0.2.1
   
-Horses (Roaches) Race   
+Скачки (тараканы и лошади)  
   
-**Near async race of horses and cockroaches  
-**With html based web interface  
+* /race/ - страница скачек  
   
-* /race/ - race page  
-
+**Скачки, работа с асинхронными функциями на питоне   
+**Небольшой веб интерфейс  
+  
