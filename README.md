@@ -1,8 +1,8 @@
 # the-site  
   
-Pre generated HTML site
+Статичный сайт для рекрутеров  
   
-**./files/ - static files to generate pages  
-**./css/ - css styles  
+**./files/ - исходники  
+**./css/ - стили    
   
-hf.py - python3 script for HTML generation  
+hf.py - python3 скрипт для генерации сайта  
