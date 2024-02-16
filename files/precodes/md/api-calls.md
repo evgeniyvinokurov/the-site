@@ -1,6 +1,6 @@
-# api-calls 
-# Вызовы апи
-
+# api-calls  
+  
+Вызовы апи    
 PHP демо, вызовы разных апи  
 Анализ сентимент и случайные факты о котах  
   
@@ -8,5 +8,5 @@ PHP демо, вызовы разных апи
 php -f index.php;  
   
 Апи:  
-text-processing.com;  
+text-processing.com  
 https://catfact.ninja/fact  
