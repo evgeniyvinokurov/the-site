@@ -444,9 +444,9 @@ li {
 
 .site__stripe-links  {
   position: fixed;
-  bottom: 0px;
   padding: 5px;
   background-color: white;
+  bottom: 50px;
 
    }
 
