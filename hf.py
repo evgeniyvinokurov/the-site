@@ -34,6 +34,7 @@ def getttile(file):
         return parser.title
 
 
+today = str(date.today())
 
 # HEADER AND FOOTER
 
@@ -50,9 +51,10 @@ with open(headerfile, mode="r", encoding="utf-8") as f:
 with open(footerfile, mode="r", encoding="utf-8") as f:
     footerhtml = f.read()
 
+footerhtml = footerhtml.replace("#date#", today)
+
 # SITEMAP
 
-today = str(date.today())
 sitemapxml = '''<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'''
 baseurl = "https://winegenii.tiiny.site/"
@@ -76,6 +78,31 @@ with open(reindexfilemain, mode="w", encoding="utf-8") as f:
 
 sitemapxml += '''<url>
     <loc>''' + baseurl + '''index.html</loc>
+    <lastmod>''' + today + '''</lastmod>
+  </url>'''
+
+
+# FAQ
+    
+faqfilemain = "./files/faq/index.html"
+faqhtml = ""
+
+with open(faqfilemain, mode="r", encoding="utf-8") as f:
+    faqhtml = f.read()
+
+refaqfilemain = "./faq/index.html" 
+faqfilemainhtml =  headerhtml + faqhtml + footerhtml
+    
+os.makedirs(os.path.dirname(refaqfilemain), exist_ok=True)
+with open(refaqfilemain, mode="w", encoding="utf-8") as f:
+    f.write(faqfilemainhtml) 
+    print("written: " + refaqfilemain)
+
+ti_m = os.path.getmtime(faqfilemain)
+tdate = datetime.datetime.utcfromtimestamp(ti_m).strftime('%Y-%m-%d')    
+
+sitemapxml += '''<url>
+    <loc>''' + baseurl + '''/faq/index.html</loc>
     <lastmod>''' + today + '''</lastmod>
   </url>'''
 
@@ -112,7 +139,7 @@ for file in os.listdir(dirtexts):
 beginhtml = '''<p class="content-text__title">
             Тексты:
         </p>
-        <ul>'''
+        <ul class="text-texts">'''
 endhtml = '''
         </ul>'''
 htmlcontent = beginhtml + htmlcontentindextexts + endhtml
@@ -139,7 +166,7 @@ imgsdir = "./files/gallery2/"
 beginhtml = '''<p class="content-text__title">
             Картинки:
         </p>
-        <div'''
+        <div>'''
 endhtml = '''
         </div>'''
 content = ""
@@ -159,7 +186,7 @@ for file in os.listdir(imgsdir):
 
 tdate = datetime.datetime.utcfromtimestamp(ti_m).strftime('%Y-%m-%d')    
 reimgindexfile = "./gallery2/index.html"
-indexfileimghtml =  headerhtml + content + footerhtml
+indexfileimghtml =  headerhtml + beginhtml + content + endhtml + footerhtml
 
 sitemapxml += '''<url>
                 <loc>''' + baseurl + '''gallery2/index.html</loc>
@@ -181,7 +208,7 @@ precodesdir = "./files/precodes/md/"
 beginhtml = '''<p class="content-text__title">
             Коды:
         </p>
-        <div'''
+        <div class="text-codes">'''
 endhtml = '''
         </div>'''
 
@@ -215,7 +242,7 @@ for file in os.listdir(iprecodesdir):
 
 tdate = datetime.datetime.utcfromtimestamp(ti_m).strftime('%Y-%m-%d')  
 preimgindexfile = "./codes/index.html"
-indexpreimghtml =  headerhtml + contenthtml + footerhtml
+indexpreimghtml =  headerhtml + beginhtml + contenthtml + endhtml + footerhtml
 
 sitemapxml += '''<url>
                 <loc>''' + baseurl + '''codes/index.html</loc>
