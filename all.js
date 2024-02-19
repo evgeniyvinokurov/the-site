@@ -102,6 +102,11 @@ function shuffleArray(d) {
 			    	var decenter = getdecenter(center, x, y, 182);
 			    	var decenter2 = getdecenter(center, x, y, 80);
 
+					if (document.documentElement.clientWidth < 800) {			    		
+						decenter = {x: 20, y: 350};
+						decenter2 = center;
+					} 
+
 			    	var overY = window.outerHeight - (decenter.y + info.outerHeight());
 			    	y = y - 1;
 		   		}
@@ -127,7 +132,11 @@ function shuffleArray(d) {
 
 		    	var popupLeft = x > center.x ? /*textWidth +*/ textLeft : textLeft - info.outerWidth();
 
-		    	info.css({top: decenter.y - 4, left: popupLeft});
+				if (document.documentElement.clientWidth < 800) {
+					info.css({top: 350, left: 20});
+				} else {
+					info.css({top: decenter.y - 4, left: popupLeft});
+				}
         	}
 
         	mouseOverEarth = mouseOverEarthCheck(x, y, center);

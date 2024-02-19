@@ -5,6 +5,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 import time
 import datetime
+import zipfile
 
 
 # TEXT FUNCTIONS
@@ -259,3 +260,15 @@ sitemapxmlfile = "./sitemap.xml"
 with open(sitemapxmlfile, mode="w", encoding="utf-8") as f:
     f.write(sitemapxml) 
     print("written: " + sitemapxmlfile)
+
+
+
+
+
+filenames = ["./codes/", "./texts/", "./faq/", "./imgs/", "./css/", "./gallery2/", "./all.js", "./favicon.png", "./sitemap.xml", "./index.html"]
+
+archivefile = "the_site"+today+".zip"
+with zipfile.ZipFile(archivefile, mode="w") as archive:
+    for filename in filenames:
+        archive.write(filename)
+print("written: " + archivefile)
