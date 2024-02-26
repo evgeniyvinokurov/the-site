@@ -587,6 +587,9 @@ li {
 .text-texts {
   font-size: 12px;
 }
+.text-texts .list{
+  width: 600px;
+}
 
 .text-texts a {
   text-decoration: none;
@@ -602,4 +605,11 @@ li {
 
 .que-faq-text {
   font-size: 12px;
+}
+.faq {
+  width: 420px;;
+}
+
+.clilist li {
+  display: block;
 }

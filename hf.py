@@ -92,7 +92,9 @@ with open(faqfilemain, mode="r", encoding="utf-8") as f:
     faqhtml = f.read()
 
 refaqfilemain = "./faq/index.html" 
-faqfilemainhtml =  headerhtml + faqhtml + footerhtml
+beginhtml = "<div class='faq'>"
+endhtml = "</div>"
+faqfilemainhtml =  headerhtml + beginhtml + faqhtml + endhtml + footerhtml
     
 os.makedirs(os.path.dirname(refaqfilemain), exist_ok=True)
 with open(refaqfilemain, mode="w", encoding="utf-8") as f:
@@ -125,11 +127,14 @@ for file in os.listdir(dirtexts):
         ti_m = os.path.getmtime(dirtexts + indexfile)
         tdate = datetime.datetime.utcfromtimestamp(ti_m).strftime('%Y-%m-%d')        
 
-        refilehtml = headerhtml + html + footerhtml
+        bhtml = "<div class='clilist'>"
+        ehtml = "</div>"
+
+        refilehtml = headerhtml + bhtml + html + ehtml + footerhtml
         os.makedirs(os.path.dirname(refile), exist_ok=True)
         with open(refile, mode="w", encoding="utf-8") as f:
             f.write(refilehtml) 
-            link = "<li class='link'><span>" + getttile(dirtexts + indexfile) + "</span> <a href='" + indexfile  + "'>-></a></li>"
+            link = "<li ><span>" + getttile(dirtexts + indexfile) + "</span> <a class='link' href='" + indexfile  + "'>-></a></li>"
             sitemapxml += '''<url>
                 <loc>''' + baseurl + '''texts/'''  + indexfile + '''</loc>
                 <lastmod>''' + tdate + '''</lastmod>
@@ -140,7 +145,7 @@ for file in os.listdir(dirtexts):
 beginhtml = '''<p class="content-text__title">
             Тексты:
         </p>
-        <ul class="text-texts">'''
+        <ul class="text-texts list">'''
 endhtml = '''
         </ul>'''
 htmlcontent = beginhtml + htmlcontentindextexts + endhtml
