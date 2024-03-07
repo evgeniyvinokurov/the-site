@@ -113,8 +113,13 @@ sitemapxml += '''<url>
 # TEXTS
     
 dirtexts = "./files/texts/"
+textsfilemain = "./files/texts/index.html"
 dirparsed = "./texts/"
+textshtml = ""
 
+with open(textsfilemain, mode="r", encoding="utf-8") as f:
+    textshtml = f.read()
+    
 htmlcontentindextexts = "" 
 for file in os.listdir(dirtexts):
     indexfile = file + "/index.html"
@@ -148,7 +153,7 @@ beginhtml = '''<p class="content-text__title">
         <ul class="text-texts list">'''
 endhtml = '''
         </ul>'''
-htmlcontent = beginhtml + htmlcontentindextexts + endhtml
+htmlcontent = textshtml + beginhtml + htmlcontentindextexts + endhtml
 
 sitemapxml += '''<url>
                 <loc>''' + baseurl + '''texts/index.html</loc>
@@ -258,7 +263,28 @@ sitemapxml += '''<url>
 with open(preimgindexfile, mode="w", encoding="utf-8") as f:
     f.write(indexpreimghtml) 
     print("written: " + preimgindexfile)
+    
+    
+# CODES
 
+beginhtml = '''<div class="text-codes">'''
+endhtml = '''
+        </div>'''
+
+jscodes = "./files/jscodes/"
+htmljscodes = "<ul class='clilist'>" 
+for file in os.listdir(jscodes):
+	htmljscodes += "<li>" + file + "<a class='link' href='/jscodes/" + file + "/'>-></a></li>"
+htmljscodes += "</ul>"
+
+preimgindexfile = "./jscodes/index.html"
+os.makedirs(os.path.dirname(preimgindexfile), exist_ok=True)
+indexpreimghtml =  headerhtml + beginhtml + htmljscodes + endhtml + footerhtml
+
+
+with open(preimgindexfile, mode="w", encoding="utf-8") as f:
+    f.write(indexpreimghtml) 
+    print("written: " + preimgindexfile)
 
 sitemapxml += '</urlset>'
 sitemapxmlfile = "./sitemap.xml"

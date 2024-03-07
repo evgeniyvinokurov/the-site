@@ -435,6 +435,7 @@ li {
     opacity: 0.8;
     background-image: linear-gradient(0deg, #e5e5f7 50%, #444cf7 50%);
     background-size: 20px 20px;*/
+   
   padding: 30px 10px 60px 20px; }
 
 .site__stripe {
@@ -587,8 +588,8 @@ li {
 .text-texts {
   font-size: 12px;
 }
-.text-texts .list{
-  width: 600px;
+.text-texts.list{
+  width: 600px;margin-bottom: 100px;
 }
 
 .text-texts a {
@@ -613,3 +614,5 @@ li {
 .clilist li {
   display: block;
 }
+
+
