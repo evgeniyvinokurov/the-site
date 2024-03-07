@@ -35,7 +35,7 @@ function shuffleArray(d) {
 		{
 			id: paths[1],
 			name: "frontend",
-			text: '<li>- проекты на джаваскрипт <a class="link" href="/jscodes/">здесь</a>, <span class="description-example"> { верстка фрейворки, сборщики пакетов} </span>',			
+			text: '<li>- проекты на джаваскрипт <a class="link" href="/jscodes/">здесь</a>, <span class="description-example"> { верстка, фреймворки, сборщики пакетов} </span>',			
 			pic1: "/imgs/frontend.png"
 		},	
 		{
