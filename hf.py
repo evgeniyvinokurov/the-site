@@ -271,7 +271,7 @@ beginhtml = '''<div class="text-codes">'''
 endhtml = '''
         </div>'''
 
-jscodes = "./files/jscodes/"
+jscodes = "./jscodes/"
 htmljscodes = "<ul class='clilist'>" 
 for file in os.listdir(jscodes):
 	htmljscodes += "<li>" + file + "<a class='link' href='/jscodes/" + file + "/'>-></a></li>"

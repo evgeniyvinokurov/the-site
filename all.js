@@ -34,9 +34,9 @@ function shuffleArray(d) {
 		},	
 		{
 			id: paths[1],
-			name: "contacts",
-			text: 'Если Вы хотите предложить мне работу: <a class="link" href="https://gitflic.ru/user/evgeniyvinokurov">Gitflic</a>, <a class="link" href="mailto:evgeniy.vinokuroff@yandex.ru">Mail</a>, <a class="link" href="https://arkhangelsk.hh.ru/resume/8af77502ff0232226d0039ed1f373737785438">Резюме</a>',			
-			pic1: "/imgs/contacts.png"
+			name: "frontend",
+			text: '<li>- проекты на джаваскрипт <a class="link" href="/jscodes/">здесь</a>, <span class="description-example"> { верстка фрейворки, сборщики пакетов} </span>',			
+			pic1: "/imgs/frontend.png"
 		},	
 		{
 			id: paths[2],
