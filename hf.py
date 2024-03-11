@@ -274,7 +274,8 @@ endhtml = '''
 jscodes = "./jscodes/"
 htmljscodes = "<ul class='clilist'>" 
 for file in os.listdir(jscodes):
-	htmljscodes += "<li>" + file + "<a class='link' href='/jscodes/" + file + "/'>-></a></li>"
+	if not os.path.isfile(file):
+		htmljscodes += "<li>" + file + "<a class='link' href='/jscodes/" + file + "/'>-></a></li>"
 htmljscodes += "</ul>"
 
 preimgindexfile = "./jscodes/index.html"
