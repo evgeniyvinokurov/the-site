@@ -587,9 +587,10 @@ li {
 }
 .text-texts {
   font-size: 12px;
+  margin-bottom: 200px;
 }
 .text-texts.list{
-  width: 600px;margin-bottom: 100px;
+  width: 600px;margin-bottom: 200px;
 }
 
 .text-texts a {
@@ -608,7 +609,8 @@ li {
   font-size: 12px;
 }
 .faq {
-  width: 420px;;
+  width: 320px;
+  margin-bottom: 200px;
 }
 
 .clilist li {
