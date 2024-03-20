@@ -234,7 +234,10 @@ for file in os.listdir(precodesdir):
             if ti_m2 > ti_m:
                 ti_m = ti_m2
             name = (Path(precodesdir + file)).stem
-            content[name] = f.read().replace("  ", "</br>")  + "</br></br>"
+            lines = list(f)
+            strlines = lines[1:len(lines)]            
+            contentstr = "".join(strlines)
+            content[name] = "<h2>" + lines[0] + "</h2>" + contentstr.replace("  ", "</br>")  + "</br></br>"
             content[name+"link"] = "</br><a href='https://gitflic.ru/project/evgeniyvinokurov/" + name + "'>"+ name +"</a>"
             print("processed: " + precodesdir +  file)
 
