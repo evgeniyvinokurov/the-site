@@ -1,4 +1,4 @@
-#deezer-api-albums ver 0.1.2  
+#deezer-api-albums v0.2.2  
   
 Парсер апи deezer на SQLite3, только php, без js
   
@@ -6,6 +6,6 @@
 **/albums/listtolisten.php - избранные альбомы  
 **/albums/listtracks.php?album=id - треки альбомов из бд  
 **/albums/index.html - поиск альбомов артистов  
-**/albums/createplaylist.html - создать локальный плейлист  
-**/albums/playlist.php?id=#id# - локальный плейлист  
-**/albums/playlists.php - список локальных плейлистов  
+**/playlists/create.html - создать локальный плейлист  
+**/playlists/one.php?id=#id# - локальный плейлист  
+**/playlists/index.php - список локальных плейлистов  
