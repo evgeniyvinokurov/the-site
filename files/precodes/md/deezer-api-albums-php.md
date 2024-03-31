@@ -1,4 +1,5 @@
-#deezer-api-albums  
+#deezer-api-albums ver 0.1.2  
+  
 Парсер апи deezer на SQLite3, только php, без js
   
 **/albums/list.php - альбомы исполнителей из бд  
