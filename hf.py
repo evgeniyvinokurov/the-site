@@ -270,9 +270,6 @@ with open(preimgindexfile, mode="w", encoding="utf-8") as f:
     
 # CODES
 
-beginhtml = '''<div class="text-codes">'''
-endhtml = '''
-        </div>'''
 
 projects = [
     {"name": "quest-thing", "files": [
@@ -324,9 +321,13 @@ for p in projects:
         print("copied " + p["name"] + " " + f)
         shutil.copyfile(oldfile, file)
 
+beginhtml = '''<div class="text-codes">'''
+endhtml = '''
+        </div>'''
+
 jscodes = "./jscodes/"
 htmljscodes = "<ul class='clilist'>" 
-for p in os.listdir(jscodes):
+for file in os.listdir(jscodes):
 	if not os.path.isfile(file):
 		htmljscodes += "<li>" + file + "<a class='link' href='/jscodes/" + file + "/'>-></a></li>"
 htmljscodes += "</ul>"
