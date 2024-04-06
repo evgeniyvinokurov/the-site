@@ -227,7 +227,7 @@ readmepath = "README.md"
 
 
 beginhtml = '''<p class="content-text__title">
-            Коды:
+            Коды бэкенд:
         </p>
         <div class="text-codes">'''
 endhtml = '''
@@ -280,7 +280,7 @@ with open(preimgindexfile, mode="w", encoding="utf-8") as f:
     print("written: " + preimgindexfile)
     
     
-# CODES
+# CODES FRONT
 
 
 projects = [
@@ -324,24 +324,32 @@ jscodes = "./jscodes/"
 
 current = os.path.dirname(os.path.realpath(__file__))
 codesdir = os.path.dirname(current)
+contentfrontproj = {}
 
-for p in projects:
+for p in projects: 
+    with open(str(codesdir) + "/" + p["name"] + "/README.md", mode="r", encoding="utf-8") as f:  
+        lines = list(f)
+        strlines = lines[1:len(lines)]            
+        contentstr = "".join(strlines)
+        contentfrontproj[p["name"]] = "<h2>" + lines[0] + "</h2>" + contentstr.replace("  ", "</br>")  + "</br></br>"
     for f in p["files"]:
-        file = jscodes + "/" + p["name"] + "/" + f
+        file = jscodes + "/" + p["name"] + "/" + f       
         os.makedirs(os.path.dirname(file), exist_ok=True)
         oldfile = str(codesdir) + "/" + p["name"] + "/" + f
         print("copied " + p["name"] + " " + f)
         shutil.copyfile(oldfile, file)
 
-beginhtml = '''<div class="text-codes">'''
+beginhtml = '''<div class="text-codes"><p class="content-text__title">
+            Коды фронтенд:
+        </p>'''
 endhtml = '''
         </div>'''
 
 jscodes = "./jscodes/"
 htmljscodes = "<ul class='clilist'>" 
-for file in os.listdir(jscodes):
-	if not os.path.isfile(file):
-		htmljscodes += "<li>" + file + "<a class='link' href='/jscodes/" + file + "/'>-></a></li>"
+for file in os.listdir(jscodes):    
+    if not os.path.isfile(file):
+        htmljscodes += "<p>" + contentfrontproj[file] + "<li>" + "<a class='link' href='/jscodes/" + file + "/'>" + file + "</a></li>" + "</p><br/><br/><br/>"
 htmljscodes += "</ul>"
 
 preimgindexfile = "./jscodes/index.html"
