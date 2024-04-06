@@ -274,9 +274,59 @@ beginhtml = '''<div class="text-codes">'''
 endhtml = '''
         </div>'''
 
+projects = [
+    {"name": "quest-thing", "files": [
+        "/css/main.css",
+        "/css/treejs/32px.png",
+        "/css/treejs/throbber.gif",
+        "/css/treejs/40px.png",
+        "/css/treejs/style.min.css",
+        "all.js",
+        "index.html",
+        "index-constructor.html"
+    ]},
+    {"name": "e-shop-client", "files": [
+        "/assets/img/1484.gif",
+        "/assets/img/favicon.png",
+        "/assets/style.css",
+        "bundle.js",
+        "index.html"
+    ]},
+    {"name": "bus-tickets", "files": [
+        "/css/style.css",
+        "/imgs/down.png",
+        "/imgs/pattern.png",
+        "all.js",
+        "index.html"
+    ]},
+    {"name": "jsons-arrays", "files": [
+        "/css/main.css",
+        "all.js",
+        "index.html"
+    ]},
+    {"name": "tetris-like", "files": [
+        "/css/main.css",
+        "all.js",
+        "index.html"
+    ]},
+]
+
+jscodes = "./jscodes/"
+
+current = os.path.dirname(os.path.realpath(__file__))
+codesdir = os.path.dirname(current)
+
+for p in projects:
+    for f in p["files"]:
+        file = jscodes + "/" + p["name"] + "/" + f
+        os.makedirs(os.path.dirname(file), exist_ok=True)
+        oldfile = str(codesdir) + "/" + p["name"] + "/" + f
+        print("copied " + p["name"] + " " + f)
+        shutil.copyfile(oldfile, file)
+
 jscodes = "./jscodes/"
 htmljscodes = "<ul class='clilist'>" 
-for file in os.listdir(jscodes):
+for p in os.listdir(jscodes):
 	if not os.path.isfile(file):
 		htmljscodes += "<li>" + file + "<a class='link' href='/jscodes/" + file + "/'>-></a></li>"
 htmljscodes += "</ul>"
