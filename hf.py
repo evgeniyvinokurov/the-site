@@ -210,10 +210,20 @@ with open(reimgindexfile, mode="w", encoding="utf-8") as f:
 
 
 
-# CODES
+# CODES BACK
 
-iprecodesdir = "./files/precodes/imgs/"
-precodesdir = "./files/precodes/md/"
+projects = [
+    "roach-race",
+    "story-linker",
+    "get-your-song",
+    "xmla",
+    "deezer-api-albums-php"
+]
+
+current = os.path.dirname(os.path.realpath(__file__))
+codesdir = os.path.dirname(current)
+
+readmepath = "README.md"
 
 
 beginhtml = '''<p class="content-text__title">
@@ -227,31 +237,33 @@ content = {}
 contenthtml = ""
 ti_m = 0
 
-for file in os.listdir(precodesdir):
-    if os.path.isfile(precodesdir + file) and (".md" in file):
-        with open(precodesdir + file, mode="r", encoding="utf-8") as f:        
-            ti_m2 = os.path.getmtime(precodesdir + file)
-            if ti_m2 > ti_m:
-                ti_m = ti_m2
-            name = (Path(precodesdir + file)).stem
-            lines = list(f)
-            strlines = lines[1:len(lines)]            
-            contentstr = "".join(strlines)
-            content[name] = "<h2>" + lines[0] + "</h2>" + contentstr.replace("  ", "</br>")  + "</br></br>"
-            content[name+"link"] = "</br><a href='https://gitflic.ru/project/evgeniyvinokurov/" + name + "'>"+ name +"</a>"
-            print("processed: " + precodesdir +  file)
-
-for file in os.listdir(iprecodesdir):
-    if os.path.isfile(iprecodesdir + file) and (".jpg" in file):
-        ti_m2 = os.path.getmtime(iprecodesdir + file)
+for p in projects:
+    file = codesdir  + "/" + p + "/" + readmepath
+    with open(file, mode="r", encoding="utf-8") as f:        
+        ti_m2 = os.path.getmtime(file)
         if ti_m2 > ti_m:
             ti_m = ti_m2
-        name = (Path(precodesdir + file)).stem
-        preimgfile = "./codes/" + file
+        name = p
+        lines = list(f)
+        strlines = lines[1:len(lines)]            
+        contentstr = "".join(strlines)
+        content[name] = "<h2>" + lines[0] + "</h2>" + contentstr.replace("  ", "</br>")  + "</br></br>"
+        content[name+"link"] = "</br><a href='https://gitflic.ru/project/evgeniyvinokurov/" + name + "'>"+ name +"</a>"
+        print("processed: " + file)
+
+for p in projects:
+    imgpath = p + ".jpg"
+    name = p
+    file = codesdir + "/" + p + "/" + imgpath
+    if os.path.isfile(file) and (".jpg" in file):
+        ti_m2 = os.path.getmtime(file)
+        if ti_m2 > ti_m:
+            ti_m = ti_m2
+        preimgfile = "./codes/" + p + ".jpg"
         os.makedirs(os.path.dirname(preimgfile), exist_ok=True)
-        shutil.copy(iprecodesdir + file, preimgfile)
+        shutil.copy(file, preimgfile)
         print("coppied: " + preimgfile)
-        preimg = "<a href='/codes/" + file + "'><img width='300px' src='/codes/" + file +"'/></a>"
+        preimg = "<a href='/codes/" + imgpath + "'><img width='300px' src='/codes/" + imgpath +"'/></a>"
         contenthtml = contenthtml + content[name] + preimg + content[name+"link"] + "</br></br></br></br>"
 
 tdate = datetime.datetime.utcfromtimestamp(ti_m).strftime('%Y-%m-%d')  
