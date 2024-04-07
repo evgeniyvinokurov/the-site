@@ -258,7 +258,7 @@ projects = [
 random.shuffle(projects)
 
 codesdir = "./codes/"
-projectsdir = "./projects/"
+projectsdir = "../projects/"
 
 contentfrontproj = {}
 
