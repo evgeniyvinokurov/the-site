@@ -248,7 +248,7 @@ for p in projects:
         strlines = lines[1:len(lines)]            
         contentstr = "".join(strlines)
         content[name] = "<h2>" + lines[0] + "</h2>" + contentstr.replace("  ", "</br>")  + "</br></br>"
-        content[name+"link"] = "</br><a href='https://gitflic.ru/project/evgeniyvinokurov/" + name + "'>"+ name +"</a>"
+        content[name+"link"] = "</br><a class='link' href='https://gitflic.ru/project/evgeniyvinokurov/" + name + "'>gitflic</a>"
         print("processed: " + file)
 
 for p in projects:
@@ -281,7 +281,6 @@ with open(preimgindexfile, mode="w", encoding="utf-8") as f:
     
     
 # CODES FRONT
-
 
 projects = [
     {"name": "quest-thing", "files": [
@@ -338,6 +337,10 @@ for p in projects:
         oldfile = str(codesdir) + "/" + p["name"] + "/" + f
         print("copied " + p["name"] + " " + f)
         shutil.copyfile(oldfile, file)
+    oldimgfile = str(codesdir) + "/" + p["name"] + "/" + p["name"] + ".jpg"
+    newimgfile = jscodes + p["name"] + ".jpg"
+    shutil.copyfile(oldimgfile, newimgfile)
+    print("copied " + oldimgfile)
 
 beginhtml = '''<div class="text-codes"><p class="content-text__title">
             Коды фронтенд:
@@ -347,9 +350,14 @@ endhtml = '''
 
 jscodes = "./jscodes/"
 htmljscodes = "<ul class='clilist'>" 
-for file in os.listdir(jscodes):    
+for p in projects: 
+    file = p["name"] 
     if not os.path.isfile(file):
-        htmljscodes += "<p>" + contentfrontproj[file] + "<li>" + "<a class='link' href='/jscodes/" + file + "/'>" + file + "</a></li>" + "</p><br/><br/><br/>"
+        htmljscodes += "<p>" + contentfrontproj[file] 
+        imgpath = "/" + file + ".jpg"
+        htmljscodes += "<a href='/jscodes/" + imgpath + "'><img width='300px' src='/jscodes/" + imgpath +"'/></a>"
+        htmljscodes += "<li>" + "<a class='link' href='https://gitflic.ru/project/evgeniyvinokurov/" + file + "/'>gitflic</a> &nbsp" + "<a class='link' href='/jscodes/" + file + "/'>demo</a></li>" + "</p>"
+        htmljscodes += "<br/><br/><br/>"
 htmljscodes += "</ul>"
 
 preimgindexfile = "./jscodes/index.html"
