@@ -6,6 +6,7 @@ from pathlib import Path
 import time
 import datetime
 import zipfile
+import random
 
 
 # TEXT FUNCTIONS
@@ -183,7 +184,10 @@ endhtml = '''
 content = ""
 
 ti_m = 0
-for file in os.listdir(imgsdir):
+files = os.listdir(imgsdir)
+random.shuffle(files)
+
+for file in files:
     if os.path.isfile(imgsdir + file) and (".jpg" in file or ".png" in file):
         ti_m2 = os.path.getmtime(imgsdir + file)
         if ti_m2 > ti_m:
@@ -207,80 +211,8 @@ with open(reimgindexfile, mode="w", encoding="utf-8") as f:
     f.write(indexfileimghtml) 
     print("written: " + reimgindexfile)
 
-
-
-
-# CODES BACK
-
-projects = [
-    "roach-race",
-    "story-linker",
-    "get-your-song",
-    "xmla",
-    "deezer-api-albums-php"
-]
-
-current = os.path.dirname(os.path.realpath(__file__))
-codesdir = os.path.dirname(current)
-
-readmepath = "README.md"
-
-
-beginhtml = '''<p class="content-text__title">
-            Коды бэкенд:
-        </p>
-        <div class="text-codes">'''
-endhtml = '''
-        </div>'''
-
-content = {}
-contenthtml = ""
-ti_m = 0
-
-for p in projects:
-    file = codesdir  + "/" + p + "/" + readmepath
-    with open(file, mode="r", encoding="utf-8") as f:        
-        ti_m2 = os.path.getmtime(file)
-        if ti_m2 > ti_m:
-            ti_m = ti_m2
-        name = p
-        lines = list(f)
-        strlines = lines[1:len(lines)]            
-        contentstr = "".join(strlines)
-        content[name] = "<h2>" + lines[0] + "</h2>" + contentstr.replace("  ", "</br>")  + "</br></br>"
-        content[name+"link"] = "</br><a class='link' href='https://gitflic.ru/project/evgeniyvinokurov/" + name + "'>gitflic</a>"
-        print("processed: " + file)
-
-for p in projects:
-    imgpath = p + ".jpg"
-    name = p
-    file = codesdir + "/" + p + "/" + imgpath
-    if os.path.isfile(file) and (".jpg" in file):
-        ti_m2 = os.path.getmtime(file)
-        if ti_m2 > ti_m:
-            ti_m = ti_m2
-        preimgfile = "./codes/" + p + ".jpg"
-        os.makedirs(os.path.dirname(preimgfile), exist_ok=True)
-        shutil.copy(file, preimgfile)
-        print("coppied: " + preimgfile)
-        preimg = "<a href='/codes/" + imgpath + "'><img width='300px' src='/codes/" + imgpath +"'/></a>"
-        contenthtml = contenthtml + content[name] + preimg + content[name+"link"] + "</br></br></br></br>"
-
-tdate = datetime.datetime.utcfromtimestamp(ti_m).strftime('%Y-%m-%d')  
-preimgindexfile = "./codes/index.html"
-indexpreimghtml =  headerhtml + beginhtml + contenthtml + endhtml + footerhtml
-
-sitemapxml += '''<url>
-                <loc>''' + baseurl + '''codes/index.html</loc>
-                <lastmod>''' + tdate + '''</lastmod>
-            </url>'''
-
-with open(preimgindexfile, mode="w", encoding="utf-8") as f:
-    f.write(indexpreimghtml) 
-    print("written: " + preimgindexfile)
     
-    
-# CODES FRONT
+# CODES 
 
 projects = [
     {"name": "quest-thing", "files": [
@@ -317,52 +249,60 @@ projects = [
         "all.js",
         "index.html"
     ]},
+    {"name": "roach-race", "files": []},
+    {"name": "story-linker", "files": []},
+    {"name": "get-your-song", "files": []},
+    {"name": "xmla", "files": []},
+    {"name": "deezer-api-albums-php", "files": []}
 ]
+random.shuffle(projects)
 
-jscodes = "./jscodes/"
+codesdir = "./codes/"
+projectsdir = "./projects/"
 
-current = os.path.dirname(os.path.realpath(__file__))
-codesdir = os.path.dirname(current)
 contentfrontproj = {}
 
 for p in projects: 
-    with open(str(codesdir) + "/" + p["name"] + "/README.md", mode="r", encoding="utf-8") as f:  
+    with open(str(projectsdir) + "/" + p["name"] + "/README.md", mode="r", encoding="utf-8") as f:  
         lines = list(f)
         strlines = lines[1:len(lines)]            
         contentstr = "".join(strlines)
         contentfrontproj[p["name"]] = "<h2>" + lines[0] + "</h2>" + contentstr.replace("  ", "</br>")  + "</br></br>"
     for f in p["files"]:
-        file = jscodes + "/" + p["name"] + "/" + f       
+        file = codesdir + "/" + p["name"] + "/" + f       
         os.makedirs(os.path.dirname(file), exist_ok=True)
-        oldfile = str(codesdir) + "/" + p["name"] + "/" + f
+        oldfile = str(projectsdir) + "/" + p["name"] + "/" + f
         print("copied " + p["name"] + " " + f)
         shutil.copyfile(oldfile, file)
-    oldimgfile = str(codesdir) + "/" + p["name"] + "/" + p["name"] + ".jpg"
-    newimgfile = jscodes + p["name"] + ".jpg"
+    oldimgfile = str(projectsdir) + "/" + p["name"] + "/" + p["name"] + ".jpg"
+    newimgfile = codesdir + p["name"] + ".jpg"
     shutil.copyfile(oldimgfile, newimgfile)
     print("copied " + oldimgfile)
 
 beginhtml = '''<div class="text-codes"><p class="content-text__title">
-            Коды фронтенд:
+            Коды:
         </p>'''
 endhtml = '''
         </div>'''
 
-jscodes = "./jscodes/"
-htmljscodes = "<ul class='clilist'>" 
+codesdir = "./codes/"
+htmlcodes = "<ul class='clilist'>" 
 for p in projects: 
     file = p["name"] 
     if not os.path.isfile(file):
-        htmljscodes += "<p>" + contentfrontproj[file] 
+        htmlcodes += "<p>" + contentfrontproj[file] 
         imgpath = "/" + file + ".jpg"
-        htmljscodes += "<a href='/jscodes/" + imgpath + "'><img width='300px' src='/jscodes/" + imgpath +"'/></a>"
-        htmljscodes += "<li>" + "<a class='link' href='https://gitflic.ru/project/evgeniyvinokurov/" + file + "/'>gitflic</a> &nbsp" + "<a class='link' href='/jscodes/" + file + "/'>demo</a></li>" + "</p>"
-        htmljscodes += "<br/><br/><br/>"
-htmljscodes += "</ul>"
+        htmlcodes += "<a href='/codes/" + imgpath + "'><img width='300px' src='/codes/" + imgpath +"'/></a>"
+        htmlcodes += "<li>" + "<a class='link' href='https://gitflic.ru/project/evgeniyvinokurov/" + file + "/'>gitflic</a>"
+        if len(p["files"]) > 0:
+            htmlcodes += "&nbsp;&nbsp;<a class='link' href='/codes/" + file + "/'>demo</a>"
+        htmlcodes += "</li>" + "</p>"
+        htmlcodes += "<br/><br/><br/>"
+htmlcodes += "</ul>"
 
-preimgindexfile = "./jscodes/index.html"
+preimgindexfile = "./codes/index.html"
 os.makedirs(os.path.dirname(preimgindexfile), exist_ok=True)
-indexpreimghtml =  headerhtml + beginhtml + htmljscodes + endhtml + footerhtml
+indexpreimghtml =  headerhtml + beginhtml + htmlcodes + endhtml + footerhtml
 
 
 with open(preimgindexfile, mode="w", encoding="utf-8") as f:
