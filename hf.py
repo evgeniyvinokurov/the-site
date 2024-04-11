@@ -55,12 +55,6 @@ with open(footerfile, mode="r", encoding="utf-8") as f:
 
 footerhtml = footerhtml.replace("#date#", today)
 
-# SITEMAP
-
-sitemapxml = '''<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'''
-baseurl = "https://winegenii.tiiny.site/"
-
 
 # INDEX
     
@@ -77,11 +71,6 @@ with open(reindexfilemain, mode="w", encoding="utf-8") as f:
     f.write(indexfilemainhtml) 
     print("written: " + reindexfilemain)
 
-
-sitemapxml += '''<url>
-    <loc>''' + baseurl + '''index.html</loc>
-    <lastmod>''' + today + '''</lastmod>
-  </url>'''
 
 
 # FAQ
@@ -104,11 +93,6 @@ with open(refaqfilemain, mode="w", encoding="utf-8") as f:
 
 ti_m = os.path.getmtime(faqfilemain)
 tdate = datetime.datetime.utcfromtimestamp(ti_m).strftime('%Y-%m-%d')    
-
-sitemapxml += '''<url>
-    <loc>''' + baseurl + '''/faq/index.html</loc>
-    <lastmod>''' + today + '''</lastmod>
-  </url>'''
 
 
 # TEXTS
@@ -141,10 +125,7 @@ for file in os.listdir(dirtexts):
         with open(refile, mode="w", encoding="utf-8") as f:
             f.write(refilehtml) 
             link = "<li ><span>" + getttile(dirtexts + indexfile) + "</span> <a class='link' href='" + indexfile  + "'>-></a></li>"
-            sitemapxml += '''<url>
-                <loc>''' + baseurl + '''texts/'''  + indexfile + '''</loc>
-                <lastmod>''' + tdate + '''</lastmod>
-            </url>'''
+            
             htmlcontentindextexts = htmlcontentindextexts + link
             print("written: " + refile)
 
@@ -156,10 +137,6 @@ endhtml = '''
         </ul>'''
 htmlcontent = textshtml + beginhtml + htmlcontentindextexts + endhtml
 
-sitemapxml += '''<url>
-                <loc>''' + baseurl + '''texts/index.html</loc>
-                <lastmod>''' + today + '''</lastmod>
-            </url>'''
 
 indexfiletexts = dirparsed + "index.html" 
 indexfiletextshtml = headerhtml + htmlcontent + footerhtml
@@ -203,10 +180,6 @@ tdate = datetime.datetime.utcfromtimestamp(ti_m).strftime('%Y-%m-%d')
 reimgindexfile = "./gallery2/index.html"
 indexfileimghtml =  headerhtml + beginhtml + content + endhtml + footerhtml
 
-sitemapxml += '''<url>
-                <loc>''' + baseurl + '''gallery2/index.html</loc>
-                <lastmod>''' + tdate + '''</lastmod>
-            </url>'''
 with open(reimgindexfile, mode="w", encoding="utf-8") as f:
     f.write(indexfileimghtml) 
     print("written: " + reimgindexfile)
@@ -308,12 +281,6 @@ indexpreimghtml =  headerhtml + beginhtml + htmlcodes + endhtml + footerhtml
 with open(preimgindexfile, mode="w", encoding="utf-8") as f:
     f.write(indexpreimghtml) 
     print("written: " + preimgindexfile)
-
-sitemapxml += '</urlset>'
-sitemapxmlfile = "./sitemap.xml"
-with open(sitemapxmlfile, mode="w", encoding="utf-8") as f:
-    f.write(sitemapxml) 
-    print("written: " + sitemapxmlfile)
 
 
 
