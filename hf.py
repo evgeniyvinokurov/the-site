@@ -79,76 +79,20 @@ ti_m = os.path.getmtime(faqfilemain)
 tdate = datetime.datetime.utcfromtimestamp(ti_m).strftime('%Y-%m-%d')    
 
 
-# TEXTS
-    
-dirtexts = "./files/texts/"
-textsfilemain = "./files/texts/index.html"
-dirparsed = "./texts/"
-textshtml = ""
-
-with open(textsfilemain, mode="r", encoding="utf-8") as f:
-    textshtml = f.read()
-    
-htmlcontentindextexts = "" 
-for file in os.listdir(dirtexts):
-    indexfile = file + "/index.html"
-    if os.path.isfile(dirtexts + indexfile):
-        html = ""
-        refile = dirparsed + indexfile
-        with open(dirtexts + indexfile, mode="r", encoding="utf-8") as f:
-            html = f.read()
-
-        ti_m = os.path.getmtime(dirtexts + indexfile)
-        tdate = datetime.datetime.utcfromtimestamp(ti_m).strftime('%Y-%m-%d')        
-
-        bhtml = "<div class='clilist'>"
-        ehtml = "</div>"
-
-        refilehtml = headerhtml + bhtml + html + ehtml + footerhtml
-        os.makedirs(os.path.dirname(refile), exist_ok=True)
-        with open(refile, mode="w", encoding="utf-8") as f:
-            f.write(refilehtml) 
-            link = "<li ><span>" + getttile(dirtexts + indexfile) + "</span> <a class='link' href='" + indexfile  + "'>-></a></li>"
-            
-            htmlcontentindextexts = htmlcontentindextexts + link
-            print("written: " + refile)
-
-beginhtml = '''<p class="content-text__title">
-            Тексты:
-        </p>
-        <ul class="text-texts list">'''
-endhtml = '''
-        </ul>'''
-htmlcontent = textshtml + beginhtml + htmlcontentindextexts + endhtml
-
-
-indexfiletexts = dirparsed + "index.html" 
-indexfiletextshtml = headerhtml + htmlcontent + footerhtml
-with open(indexfiletexts, mode="w", encoding="utf-8") as f:
-    f.write(indexfiletextshtml) 
-    print("written: " + indexfiletexts)
-
-
-
   
 # CODES 
 
 projects = [
-    {"name": "quest-thing", "files": [
-        "/css/main.css",
-        "/css/treejs/32px.png",
-        "/css/treejs/throbber.gif",
-        "/css/treejs/40px.png",
-        "/css/treejs/style.min.css",
-        "all.js",
-        "index.html",
-        "index-constructor.html"
-    ]},
     {"name": "e-shop-client", "files": [
         "/assets/img/1484.gif",
         "/assets/img/favicon.png",
         "/assets/style.css",
         "bundle.js",
+        "index.html"
+    ]},
+    {"name": "jsons-arrays", "files": [
+        "/css/main.css",
+        "all.js",
         "index.html"
     ]},
     {"name": "bus-tickets", "files": [
@@ -159,7 +103,6 @@ projects = [
         "index.html"
     ]},
     {"name": "roach-race", "files": []},
-    {"name": "get-your-song", "files": []},
     {"name": "xmla", "files": []},
     {"name": "deezer-api-albums-php", "files": []}
 ]
