@@ -217,11 +217,6 @@ projects = [
         "all.js",
         "index.html"
     ]},
-    {"name": "tetris-like", "files": [
-        "/css/main.css",
-        "all.js",
-        "index.html"
-    ]},
     {"name": "roach-race", "files": []},
     {"name": "story-linker", "files": []},
     {"name": "get-your-song", "files": []},
