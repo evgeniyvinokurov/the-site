@@ -212,13 +212,7 @@ projects = [
         "all.js",
         "index.html"
     ]},
-    {"name": "jsons-arrays", "files": [
-        "/css/main.css",
-        "all.js",
-        "index.html"
-    ]},
     {"name": "roach-race", "files": []},
-    {"name": "story-linker", "files": []},
     {"name": "get-your-song", "files": []},
     {"name": "xmla", "files": []},
     {"name": "deezer-api-albums-php", "files": []}
