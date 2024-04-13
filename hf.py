@@ -56,24 +56,8 @@ with open(footerfile, mode="r", encoding="utf-8") as f:
 footerhtml = footerhtml.replace("#date#", today)
 
 
-# INDEX
-    
-indexfilemain = "./files/index.html"
-indexhtml = ""
 
-with open(indexfilemain, mode="r", encoding="utf-8") as f:
-    indexhtml = f.read()
-
-reindexfilemain = "./index.html" 
-indexfilemainhtml =  headerhtml + indexhtml + footerhtml
-    
-with open(reindexfilemain, mode="w", encoding="utf-8") as f:
-    f.write(indexfilemainhtml) 
-    print("written: " + reindexfilemain)
-
-
-
-# FAQ
+# FAQ INDEX
     
 faqfilemain = "./files/faq/index.html"
 faqhtml = ""
@@ -81,7 +65,7 @@ faqhtml = ""
 with open(faqfilemain, mode="r", encoding="utf-8") as f:
     faqhtml = f.read()
 
-refaqfilemain = "./faq/index.html" 
+refaqfilemain = "./index.html" 
 beginhtml = "<div class='faq'>"
 endhtml = "</div>"
 faqfilemainhtml =  headerhtml + beginhtml + faqhtml + endhtml + footerhtml
@@ -146,45 +130,7 @@ with open(indexfiletexts, mode="w", encoding="utf-8") as f:
 
 
 
-
-
-
-# GALLERY
-    
-imgsdir = "./files/gallery2/"
-beginhtml = '''<p class="content-text__title">
-            Картинки:
-        </p>
-        <div>'''
-endhtml = '''
-        </div>'''
-content = ""
-
-ti_m = 0
-files = os.listdir(imgsdir)
-random.shuffle(files)
-
-for file in files:
-    if os.path.isfile(imgsdir + file) and (".jpg" in file or ".png" in file):
-        ti_m2 = os.path.getmtime(imgsdir + file)
-        if ti_m2 > ti_m:
-            ti_m = ti_m2
-        reimgfile = "./gallery2/" + file
-        os.makedirs(os.path.dirname(reimgfile), exist_ok=True)
-        shutil.copy(imgsdir + file, reimgfile)
-        print("coppied: " + reimgfile)
-        img = "<a class='img' href='/gallery2/" + file + "'><img width='700px' src='/gallery2/" + file +"'/></a>"
-        content = content + img
-
-tdate = datetime.datetime.utcfromtimestamp(ti_m).strftime('%Y-%m-%d')    
-reimgindexfile = "./gallery2/index.html"
-indexfileimghtml =  headerhtml + beginhtml + content + endhtml + footerhtml
-
-with open(reimgindexfile, mode="w", encoding="utf-8") as f:
-    f.write(indexfileimghtml) 
-    print("written: " + reimgindexfile)
-
-    
+  
 # CODES 
 
 projects = [
