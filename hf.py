@@ -38,6 +38,8 @@ def getttile(file):
 
 today = str(date.today())
 
+
+
 # HEADER AND FOOTER
 
 footerfile = "./files/footer.html"
@@ -65,7 +67,7 @@ faqhtml = ""
 with open(faqfilemain, mode="r", encoding="utf-8") as f:
     faqhtml = f.read()
 
-refaqfilemain = "./index.html" 
+refaqfilemain = "./faq/index.html" 
 beginhtml = "<div class='faq'>"
 endhtml = "</div>"
 faqfilemainhtml =  headerhtml + beginhtml + faqhtml + endhtml + footerhtml
@@ -108,7 +110,7 @@ projects = [
 ]
 random.shuffle(projects)
 
-codesdir = "./codes/"
+codesdir = "./"
 projectsdir = "../projects/"
 
 contentfrontproj = {}
@@ -131,27 +133,27 @@ for p in projects:
     print("copied " + oldimgfile)
 
 beginhtml = '''<div class="text-codes"><p class="content-text__title">
-            Коды:
+            Тестовые проекты:
         </p>'''
 endhtml = '''
         </div>'''
 
-codesdir = "./codes/"
+codesdir = "./"
 htmlcodes = "<ul class='clilist'>" 
 for p in projects: 
     file = p["name"] 
     if not os.path.isfile(file):
         htmlcodes += "<p>" + contentfrontproj[file] 
         imgpath = "/" + file + ".jpg"
-        htmlcodes += "<a href='/codes/" + imgpath + "'><img width='300px' src='/codes/" + imgpath +"'/></a>"
+        htmlcodes += "<a href='" + imgpath + "'><img width='300px' src='" + imgpath +"'/></a>"
         htmlcodes += "<li>" + "<a class='link' href='https://gitflic.ru/project/evgeniyvinokurov/" + file + "/'>gitflic</a>"
         if len(p["files"]) > 0:
-            htmlcodes += "&nbsp;&nbsp;<a class='link' href='/codes/" + file + "/'>demo</a>"
+            htmlcodes += "&nbsp;&nbsp;<a class='link' href='/" + file + "/'>demo</a>"
         htmlcodes += "</li>" + "</p>"
         htmlcodes += "<br/><br/><br/>"
 htmlcodes += "</ul>"
 
-preimgindexfile = "./codes/index.html"
+preimgindexfile = "./index.html"
 os.makedirs(os.path.dirname(preimgindexfile), exist_ok=True)
 indexpreimghtml =  headerhtml + beginhtml + htmlcodes + endhtml + footerhtml
 
