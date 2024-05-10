@@ -104,8 +104,8 @@ projects = [
         "all.js",
         "index.html"
     ]},
-    {"name": "roach-race", "files": []},
-    {"name": "xmla", "files": []},
+    {"name": "roach-race", "files": [], "url": "http://evgeniyvinokurov.pythonanywhere.com/race/"},
+    {"name": "xmla", "files": [], "url": "http://evgeniyvinokurov.pythonanywhere.com/catalog/"},
     {"name": "deezer-api-albums-php", "files": []}
 ]
 random.shuffle(projects)
@@ -149,6 +149,8 @@ for p in projects:
         htmlcodes += "<li>" + "<a class='link' href='https://gitflic.ru/project/evgeniyvinokurov/" + file + "/'>gitflic</a>"
         if len(p["files"]) > 0:
             htmlcodes += "&nbsp;&nbsp;<a class='link' href='/" + file + "/'>demo</a>"
+        if "url" in p:
+            htmlcodes += "&nbsp;&nbsp;<a class='link' href='" + p["url"] + "'>demo</a>"        
         htmlcodes += "</li>" + "</p>"
         htmlcodes += "<br/><br/><br/>"
 htmlcodes += "</ul>"
