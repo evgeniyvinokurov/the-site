@@ -85,17 +85,21 @@ tdate = datetime.datetime.utcfromtimestamp(ti_m).strftime('%Y-%m-%d')
 # CODES 
 
 projects = [
-    {"name": "e-shop-client", "files": [
-        "/assets/img/1484.gif",
-        "/assets/img/favicon.png",
-        "/assets/style.css",
-        "bundle.js",
-        "index.html"
-    ]},
     {"name": "jsons-arrays", "files": [
         "/css/main.css",
         "all.js",
         "index.html"
+    ]},
+    {"name": "xmla", "files": [], "url": "http://evgeniyvinokurov.pythonanywhere.com/catalog/"},
+    {"name": "quest-thing", "files": [
+        "/css/main.css",
+        "/css/treejs/32px.png",
+        "/css/treejs/throbber.gif",
+        "/css/treejs/40px.png",
+        "/css/treejs/style.min.css",
+        "all.js",
+        "index.html",
+        "index-constructor.html"
     ]},
     {"name": "bus-tickets", "files": [
         "/css/style.css",
@@ -105,10 +109,14 @@ projects = [
         "index.html"
     ]},
     {"name": "roach-race", "files": [], "url": "http://evgeniyvinokurov.pythonanywhere.com/race/"},
-    {"name": "xmla", "files": [], "url": "http://evgeniyvinokurov.pythonanywhere.com/catalog/"},
-    {"name": "deezer-api-albums-php", "files": []}
+    {"name": "deezer-api-albums-php", "files": [], "url": "http://www.evgeniyvinokurov.byethost9.com/albums/"},
+    {"name": "python-scripts", "files": []},
+    {"name": "story-linker", "files": []},
+    {"name": "get-your-song", "files": [], "url": "http://www.evgeniyvinokurov.byethost9.com/get-your-song/"}
 ]
+
 random.shuffle(projects)
+projects = sorted(projects, key=lambda p: p["url"] if "url" in p else str(len(p["files"])), reverse=True)
 
 codesdir = "./"
 projectsdir = "../projects/"
