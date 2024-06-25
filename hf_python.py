@@ -42,8 +42,8 @@ today = str(date.today())
 
 # HEADER AND FOOTER
 
-footerfile = "./files/footer.html"
-headerfile = "./files/header.html"
+footerfile = "./files/python-footer.html"
+headerfile = "./files/python-header.html"
 
 
 footerhtml = ""
@@ -58,67 +58,17 @@ with open(footerfile, mode="r", encoding="utf-8") as f:
 footerhtml = footerhtml.replace("#date#", today)
 
 
-
-# FAQ INDEX
-    
-faqfilemain = "./files/faq/index.html"
-faqhtml = ""
-
-with open(faqfilemain, mode="r", encoding="utf-8") as f:
-    faqhtml = f.read()
-
-refaqfilemain = "./faq/index.html" 
-beginhtml = "<div class='faq'>"
-endhtml = "</div>"
-faqfilemainhtml =  headerhtml + beginhtml + faqhtml + endhtml + footerhtml
-    
-os.makedirs(os.path.dirname(refaqfilemain), exist_ok=True)
-with open(refaqfilemain, mode="w", encoding="utf-8") as f:
-    f.write(faqfilemainhtml) 
-    print("written: " + refaqfilemain)
-
-ti_m = os.path.getmtime(faqfilemain)
-tdate = datetime.datetime.utcfromtimestamp(ti_m).strftime('%Y-%m-%d')    
-
-
   
 # CODES 
 
 projects = [
-    {"name": "jsons-arrays", "files": [
-        "/css/main.css",
-        "all.js",
-        "index.html"
-    ]},
-    {"name": "xmla", "files": [], "url": "http://evgeniyvinokurov.pythonanywhere.com/catalog/"},
-    {"name": "quest-thing", "files": [
-        "/css/main.css",
-        "/css/treejs/32px.png",
-        "/css/treejs/throbber.gif",
-        "/css/treejs/40px.png",
-        "/css/treejs/style.min.css",
-        "all.js",
-        "index.html",
-        "index-constructor.html"
-    ]},
-    {"name": "bus-tickets", "files": [
-        "/css/style.css",
-        "/imgs/down.png",
-        "/imgs/pattern.png",
-        "all.js",
-        "index.html"
-    ]},
-    {"name": "roach-race", "files": [], "url": "http://evgeniyvinokurov.pythonanywhere.com/race/"},
-    {"name": "deezer-api-albums-php", "files": [], "url": "http://www.evgeniyvinokurov.byethost9.com/albums/"},
-    {"name": "python-scripts", "files": []},
-    {"name": "story-linker", "files": []},
-    {"name": "get-your-song", "files": [], "url": "http://www.evgeniyvinokurov.byethost9.com/get-your-song/"}
+    {"name": "roach-race", "files": [], "url": "/race/"},
+    {"name": "xmla", "files": [], "url": "/catalog/"},
+    {"name": "lottery-salt-emulator", "files": [], "url": "/all/"}
 ]
 
-random.shuffle(projects)
-projects = sorted(projects, key=lambda p: p["url"] if "url" in p else str(len(p["files"])), reverse=True)
 
-codesdir = "./"
+codesdir = "./python//static/imgs/"
 projectsdir = "../projects/"
 
 contentfrontproj = {}
@@ -146,13 +96,12 @@ beginhtml = '''<div class="text-codes"><p class="content-text__title">
 endhtml = '''
         </div>'''
 
-codesdir = "./"
 htmlcodes = "<ul class='clilist'>" 
 for p in projects: 
     file = p["name"] 
     if not os.path.isfile(file):
         htmlcodes += "<p>" + contentfrontproj[file] 
-        imgpath = "/" + file + ".jpg"
+        imgpath = "/static/imgs/" + file + ".jpg"
         htmlcodes += "<a href='" + imgpath + "'><img width='300px' src='" + imgpath +"'/></a>"
         htmlcodes += "<li>" + "<a class='link' href='https://gitflic.ru/project/evgeniyvinokurov/" + file + "/'>gitflic</a>"
         if len(p["files"]) > 0:
@@ -163,7 +112,7 @@ for p in projects:
         htmlcodes += "<br/><br/><br/>"
 htmlcodes += "</ul>"
 
-preimgindexfile = "./index.html"
+preimgindexfile = "./python/views/index-python.html"
 os.makedirs(os.path.dirname(preimgindexfile), exist_ok=True)
 indexpreimghtml =  headerhtml + beginhtml + htmlcodes + endhtml + footerhtml
 
@@ -172,5 +121,8 @@ with open(preimgindexfile, mode="w", encoding="utf-8") as f:
     f.write(indexpreimghtml) 
     print("written: " + preimgindexfile)
 
-
+precssfile = "./python/static/css/main.css"
+os.makedirs(os.path.dirname(precssfile), exist_ok=True)
+shutil.copyfile("./css/main.css", precssfile)
+print("css copied")
 
