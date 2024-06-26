@@ -42,8 +42,8 @@ today = str(date.today())
 
 # HEADER AND FOOTER
 
-footerfile = "./files/footer.html"
-headerfile = "./files/header.html"
+footerfile = "./files/js-footer.html"
+headerfile = "./files/js-header.html"
 
 
 footerhtml = ""
@@ -111,14 +111,74 @@ projects = [
         "all.js",
         "index.html"
     ]},
+    {"name": "text-animation", "files": [
+        "/css/main.css",
+        "all.js",
+        "index.html"
+    ]},
     {"name": "e-shop-client", "files": [
         "/assets/style.css",
         "/assets/img/1484.gif",
         "/assets/img/favicon.png",
         "bundle.js",
         "index.html"
-    ]}
-]
+    ]},
+    {"name": "dances", "files": [
+        "all.js",
+        "/Bongos/hihat.wav",
+        "/Bongos/kick2.wav",
+        "/Bongos/kick.wav",
+        "/Bongos/snare.wav",
+        "/Bongos/tom12.wav",
+        "/Bongos/tom1.wav",
+        "/Bongos/tom2.wav",
+        "/Bongos/tom3.wav",
+        "/css/main.css",
+        "/fonts/basic/font-webfont.ttf",
+        "/fonts/basic/font-webfont.woff",
+        "/fonts/basic/font-webfont.woff2",
+        "/imgs/button1.png",
+        "/imgs/button2.png",
+        "/imgs/button3.png",
+        "/imgs/button4.png",
+        "/imgs/button5.png",
+        "/imgs/button6.png",
+        "/imgs/calendar.png",
+        "/imgs/checklist.png",
+        "/imgs/facebook.png",
+        "/imgs/footer_logo.png",
+        "/imgs/header_logo.png",
+        "/imgs/info_cats_2.png",
+        "/imgs/info_cats.png",
+        "/imgs/info.png",
+        "/imgs/phone.png",
+        "/imgs/pinterest.png",
+        "/imgs/placemark.png",
+        "/imgs/rss.png",
+        "/imgs/search.png",
+        "/imgs/share.png",
+        "/imgs/slider_cats_2.png",
+        "/imgs/slider_cats_3.png",
+        "/imgs/slider_cats.png",
+        "/imgs/tam1.png",
+        "/imgs/tam2.png",
+        "/imgs/tam3.png",
+        "/imgs/tam4.png",
+        "/imgs/tam5.png",
+        "/imgs/tam6.png",
+        "/imgs/tam7.png",
+        "/imgs/tam8.png",
+        "/imgs/totheleft.png",
+        "/imgs/totheright.png",
+        "/imgs/translation.png",
+        "/imgs/twitter.png",
+        "/imgs/ufo2.png",
+        "/imgs/ufocats.png",
+        "/imgs/ufo.png",
+        "/imgs/ukulele.png",
+        "/imgs/warning.png",
+        "index.html"]
+}];
 
 
 codesdir = "./js/demo/"
@@ -144,7 +204,7 @@ for p in projects:
     print("copied " + oldimgfile)
 
 beginhtml = '''<div class="text-codes"><p class="content-text__title">
-            Тестовые проекты:
+            Тестовые проекты JS:
         </p>'''
 endhtml = '''
         </div>'''

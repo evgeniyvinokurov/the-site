@@ -91,7 +91,7 @@ for p in projects:
     print("copied " + oldimgfile)
 
 beginhtml = '''<div class="text-codes"><p class="content-text__title">
-            Тестовые проекты:
+            Тестовые проекты Python:
         </p>'''
 endhtml = '''
         </div>'''

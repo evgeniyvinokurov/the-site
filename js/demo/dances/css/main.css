@@ -1,0 +1,496 @@
+@font-face {
+  font-family: "disciplina_personal_useRg";
+  src: url("../fonts/basic/font-webfont.woff2") format("woff2"), url("../fonts/basic/font-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+  font-family: Comfortaa;
+}
+
+.site {
+  overflow: hidden;
+}
+.site .site_block, .site .site__footer, .site .site__content, .site .site__header {
+  display: block;
+  width: 800px;
+  margin: 0 auto;
+}
+.site .info_field, .site .site__content .geography__title-text, .site__content .site .geography__title-text, .site .site__content .geography__title-pic, .site__content .site .geography__title-pic, .site .site__content .coordinates__title-text, .site__content .site .coordinates__title-text, .site .site__content .coordinates__title-pic, .site__content .site .coordinates__title-pic, .site .site__content-brief .info__phone-value, .site__content-brief .site .info__phone-value, .site .site__content-brief .info__phone-pic, .site__content-brief .site .info__phone-pic, .site .site__content-brief .info__date-value, .site__content-brief .site .info__date-value, .site .site__content-brief .info__date-pic, .site__content-brief .site .info__date-pic {
+  display: inline-block;
+  vertical-align: middle;
+}
+.site .info_field img, .site .site__content .geography__title-text img, .site__content .site .geography__title-text img, .site .site__content .geography__title-pic img, .site__content .site .geography__title-pic img, .site .site__content .coordinates__title-text img, .site__content .site .coordinates__title-text img, .site .site__content .coordinates__title-pic img, .site__content .site .coordinates__title-pic img, .site .site__content-brief .info__phone-value img, .site__content-brief .site .info__phone-value img, .site .site__content-brief .info__phone-pic img, .site__content-brief .site .info__phone-pic img, .site .site__content-brief .info__date-value img, .site__content-brief .site .info__date-value img, .site .site__content-brief .info__date-pic img, .site__content-brief .site .info__date-pic img {
+  width: 40px;
+}
+.site__header .slider {
+  position: relative;
+  height: 410px;
+  width: 650px;
+  margin: 0 auto;
+  padding-bottom: 50px;
+  overflow: hidden;
+}
+.site__header .slider-container {
+  width: 550px;
+}
+.site__header .slider img {
+  display: inline-block;
+  z-index: 0;
+}
+.site__header .slider__tv-promo {
+  position: absolute;
+  right: 50px;
+  top: 350px;
+  z-index: 10;
+  cursor: pointer;
+}
+.site__header .header-menu__list {
+  display: block;
+  background-color: black;
+  padding: 20px;
+}
+.site__header .header-menu__item {
+  display: inline-block;
+  color: white;
+  font-weight: bold;
+  width: 130px;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "disciplina_personal_useRg";
+  font-size: 25px;
+  cursor: pointer;
+}
+.site__header .header-menu__item--dances {
+  color: #f44336;
+}
+.site__header .header-menu__item--dances:hover {
+  color: #f77066;
+}
+.site__header .header-menu__item--stages {
+  color: #7cb342;
+}
+.site__header .header-menu__item--stages:hover {
+  color: #95c563;
+}
+.site__header .header-menu__item--people {
+  color: #314a87;
+}
+.site__header .header-menu__item--people:hover {
+  color: #3f5fac;
+}
+.site__header .header-menu__item--contacts {
+  color: #009688;
+}
+.site__header .header-menu__item--contacts:hover {
+  color: #00c9b6;
+}
+.site__header .header-menu__item--wanttodance {
+  color: #f99700;
+  margin-left: 30px;
+}
+.site__header .header-menu__item--wanttodance:hover {
+  color: #ffac2d;
+}
+.site__header .main-logo {
+  margin: 20px 20px 0 20px;
+}
+.site__content-brief {
+  font-size: 15px;
+  line-height: 22px;
+}
+.site__content-brief .separator {
+  width: 800px;
+  background: #c9dbc3;
+  height: 30px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+.site__content-brief .main-slider {
+  background: #e6eee3;
+  position: relative;
+  overflow: hidden;
+}
+.site__content-brief .main-slider__controls {
+  top: 0px;
+  position: absolute;
+  width: 800px;
+  height: 200px;
+  display: block;
+}
+.site__content-brief .main-slider__controls-left {
+  position: relative;
+  left: 10px;
+  top: 50px;
+  cursor: pointer;
+  width: 20px;
+  display: inline-block;
+  float: left;
+  z-index: 2;
+}
+.site__content-brief .main-slider__controls-left img {
+  height: 70px;
+}
+.site__content-brief .main-slider__controls-right {
+  position: relative;
+  right: 30px;
+  cursor: pointer;
+  top: 50px;
+  width: 20px;
+  display: inline-block;
+  float: right;
+  z-index: 2;
+}
+.site__content-brief .main-slider__controls-right img {
+  height: 70px;
+}
+.site__content-brief .main-slider__list {
+  display: block;
+  margin: 0 auto;
+  height: 172px;
+  width: 2000px;
+  position: relative;
+  padding: 5px 5px 0 5px;
+}
+.site__content-brief .main-slider__list-item {
+  display: inline-block;
+  margin: -2.5px;
+}
+.site__content-brief .main-slider__list-item img {
+  width: 260px;
+  height: 170px;
+}
+.site__content-brief .info {
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  width: 400px;
+  padding: 20px;
+}
+.site__content-brief .info__date {
+  text-align: center;
+}
+.site__content-brief .info__phone {
+  text-align: center;
+}
+.site__content-brief .description {
+  background-color: #e6eee3;
+}
+.site__content-brief .description__title {
+  margin: 0 auto;
+  width: 200px;
+  text-align: center;
+  padding-top: 20px;
+  font-weight: bold;
+}
+.site__content-brief .description__text {
+  padding: 20px;
+  text-indent: 40px;
+}
+.site__content .coordinates {
+  padding: 50px;
+}
+.site__content .coordinates__title {
+  margin: 0 auto;
+  width: 400px;
+  text-align: center;
+  font-family: "disciplina_personal_useRg";
+  line-height: 1px;
+}
+.site__content .coordinates__title-text {
+  text-transform: uppercase;
+  font-size: 40px;
+  font-weight: bold;
+}
+.site__content .coordinates__map {
+  margin: 0 auto;
+  padding: 20px;
+  width: 500px;
+  position: relative;
+}
+.site__content .coordinates__map-descriptions {
+  display: none;
+  position: absolute;
+  top: 225px;
+  width: 170px;
+  font-size: 10px;
+  right: -193px;
+  border: 3px solid black;
+  padding: 8px;
+}
+.site__content .coordinates__map .triangle-left {
+  display: none;
+  position: absolute;
+  top: 236px;
+  right: -4px;
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-right: 15px solid black;
+}
+.site__content .coordinates__map .inner-triangle {
+  position: relative;
+  top: -12px;
+  left: 4px;
+  width: 0;
+  height: 0;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-right: 12px solid white;
+}
+.site__content .coordinates__map-header {
+  width: 100%;
+  height: 30px;
+  display: block;
+}
+.site__content .coordinates__map-header-left {
+  display: inline-block;
+  float: left;
+  width: 200px;
+}
+.site__content .coordinates__map-header-right {
+  display: inline-block;
+  float: right;
+  text-align: right;
+  width: 200px;
+}
+.site__content .coordinates__map-content {
+  display: block;
+  height: 300px;
+  width: 500px;
+}
+.site__content .coordinates__map-footer {
+  width: 100%;
+  display: block;
+  height: 30px;
+  margin-top: 10px;
+}
+.site__content .tamtams {
+  width: 800px;
+}
+.site__content .tamtams .tam {
+  display: inline-block;
+  cursor: grabbing;
+}
+.site__content .geography {
+  padding: 50px;
+  position: relative;
+}
+.site__content .geography__title {
+  margin: 0 auto;
+  width: 400px;
+  text-align: center;
+  font-family: "disciplina_personal_useRg";
+  line-height: 1px;
+}
+.site__content .geography__title-text {
+  text-transform: uppercase;
+  font-size: 40px;
+  font-weight: bold;
+}
+.site__content .geography__interactive-earth {
+  position: relative;
+  width: 700px;
+  height: 500px;
+}
+.site__content .geography__interactive-earth-point {
+  position: absolute;
+  z-index: 5;
+  visibility: hidden;
+}
+.site__content .geography__interactive-earth-point img {
+  width: 30px;
+}
+.site__content .geography__interactive-earth-img {
+  position: relative;
+  width: 700px;
+  height: 500px;
+}
+.site__content .geography__interactive-earth-img #svgCanvas {
+  top: 0px;
+  position: absolute;
+  width: 700px;
+  height: 500px;
+  z-index: 1;
+}
+.site__content .geography__interactive-earth-img #svgCanvas svg {
+  position: absolute;
+  top: 0px;
+  width: 700px;
+  height: 500px;
+  /*position: a*/
+}
+.site__content .geography__interactive-earth-img #earth {
+  position: absolute;
+  margin: 0 auto;
+  width: 700px;
+  height: 500px;
+  z-index: 2;
+}
+.site__content .geography__interactive-earth-img #earth svg {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  left: 250px;
+  position: absolute;
+  top: 150px;
+}
+.site__content .geography__interactive-earth-label {
+  position: absolute;
+  font-family: "disciplina_personal_useRg";
+  color: #009688;
+  padding: 10px;
+  padding-left: 0px;
+  padding-right: 0px;
+  visibility: hidden;
+}
+.site__content .geography__interactive-earth .country-info {
+  position: absolute;
+  width: 340px;
+  background-color: #c9dbc3;
+  padding: 10px 10px 5px 10px;
+  visibility: hidden;
+  font-size: 13px;
+  line-height: 20px;
+}
+.site__content .geography__interactive-earth .country-info__images {
+  position: relative;
+  height: 170px;
+}
+.site__content .geography__interactive-earth .country-info__images-item {
+  display: inline-block;
+  position: relative;
+}
+.site__content .geography__interactive-earth .country-info__images-item--horizontal {
+  width: 200px;
+  float: left;
+}
+.site__content .geography__interactive-earth .country-info__images-item--vertical {
+  width: 128px;
+  float: right;
+}
+.site__content .geography__interactive-earth .country-info__label {
+  font-family: "disciplina_personal_useRg";
+  width: 100px;
+  font-size: 14px;
+  padding: 5px 0 7px 0;
+  display: block;
+  position: relative;
+}
+.site__content .geography__interactive-earth .country-info__text {
+  padding: 0 0 10px 0px;
+  text-indent: 30px;
+}
+.site__content .geography__interactive-earth .country-info__footer {
+  display: block;
+  margin: 0 auto;
+}
+.site__content .geography__interactive-earth .country-info__footer-item {
+  display: inline-block;
+  cursor: pointer;
+  width: 70px;
+  margin-left: 30px;
+}
+.site__content .geography__interactive-earth .country-info__footer-item img {
+  width: 60px;
+}
+.site__content .geography__interactive-earth .country-info__footer-item-point img {
+  width: 35px;
+  vertical-align: 5px;
+}
+.site__content .geography .geography__panel {
+  position: relative;
+  height: 40px;
+  width: 200px;
+  float: right;
+  z-index: 3;
+}
+.site__content .social {
+  padding-left: 20px;
+}
+.site__content .social-button {
+  text-decoration: none;
+  margin-left: -3px;
+}
+.site__content .social-button img {
+  width: 30px;
+}
+.site__content .social-button--fb img {
+  margin-bottom: -2px;
+  width: 31px;
+}
+.site__content .social-button--pinterest {
+  margin-bottom: -2px;
+}
+.site__content .social-button--pinterest img {
+  width: 27px;
+}
+.site__content .social-button--share {
+  margin-left: -5px;
+}
+.site__content .separator {
+  width: 800px;
+  background: #c9dbc3;
+  height: 30px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.site__footer {
+  background-color: black;
+}
+.site__footer-container .under-menu, .site__footer-container .under-menu-second {
+  display: inline-block;
+  vertical-align: top;
+}
+.site__footer-container .under-menu__list, .site__footer-container .under-menu-second__list {
+  display: block;
+  background-color: black;
+  padding: 20px;
+}
+.site__footer-container .under-menu__item, .site__footer-container .under-menu-second__item {
+  display: block;
+  color: white;
+  width: 140px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.site__footer-container .under-logo {
+  display: inline-block;
+  padding: 20px;
+  float: right;
+}
+.site__footer-container .under-logo img {
+  height: 50px;
+}
+
+.swiper-wrapper {
+  width: 2000px;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 100%;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+#map img {
+  cursor: pointer;
+}
+
+#line {
+  stroke-dasharray: 15;
+  stroke-dashoffset: 30;
+  -webkit-animation: draw 1s linear infinite;
+}
+
+@-webkit-keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
