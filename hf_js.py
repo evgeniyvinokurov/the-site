@@ -182,7 +182,7 @@ projects = [
         "/app/assets/MOCK_DATA.json",
         "/app/favicon.ico",
         "/app/index.html",
-        "/app/main-4IHIYZ4K.js",
+        "/app/main-3JO4DNX4.js",
         "/app/polyfills-6EAL64PA.js",
         "/app/styles-BJXQGC3E.css",
     ], "baseUrl": "app/"},
