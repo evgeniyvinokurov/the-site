@@ -178,7 +178,14 @@ projects = [
     {"name": "basic-tetris", "files": [
         "tetris.js",
         "index.html"
-    ]},{"name": "users", "files": []},
+    ]},{"name": "users", "files": [
+        "/app/assets/MOCK_DATA.json",
+        "/app/favicon.ico",
+        "/app/index.html",
+        "/app/main-4IHIYZ4K.js",
+        "/app/polyfills-6EAL64PA.js",
+        "/app/styles-BJXQGC3E.css",
+    ], "baseUrl": "app/"},
     {"name": "base-python-app-for-web", "files": [], "url": "evgeniyvinokurov.pythonanywhere.com/feedback/"}
 ];
 
@@ -221,7 +228,7 @@ for p in projects:
         htmlcodes += "<a href='" + imgpath + "'><img width='300px' src='" + imgpath +"'/></a>"
         htmlcodes += "<li>" + "<a class='link' href='https://gitflic.ru/project/evgeniyvinokurov/" + file + "/'>gitflic</a>"
         if len(p["files"]) > 0:
-            htmlcodes += "&nbsp;&nbsp;<a class='link' href='/demo/" + file + "/'>demo</a>"
+            htmlcodes += "&nbsp;&nbsp;<a class='link' href='/demo/" + file + "/" + (p["baseUrl"] if "baseUrl" in p else "") + "'>demo</a>"
         if "url" in p:
             htmlcodes += "&nbsp;&nbsp;<a class='link' href='" + p["url"] + "'>demo</a>"        
         htmlcodes += "</li>" + "</p>"
