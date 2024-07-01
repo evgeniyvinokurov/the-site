@@ -92,30 +92,6 @@ projects = [
         "all.js",
         "index.html"
     ]},
-    {"name": "quest-thing", "files": [
-        "/css/main.css",
-        "/css/treejs/32px.png",
-        "/css/treejs/throbber.gif",
-        "/css/treejs/40px.png",
-        "/css/treejs/style.min.css",
-        "all.js",
-        "index.html",
-        "index-constructor.html"
-    ]},
-    {"name": "basic-tetris", "files": [
-        "tetris.js",
-        "index.html"
-    ]},
-    {"name": "jsons-arrays", "files": [
-        "/css/main.css",
-        "all.js",
-        "index.html"
-    ]},
-    {"name": "text-animation", "files": [
-        "/css/main.css",
-        "all.js",
-        "index.html"
-    ]},
     {"name": "e-shop-client", "files": [
         "/assets/style.css",
         "/assets/img/1484.gif",
@@ -178,7 +154,33 @@ projects = [
         "/imgs/ukulele.png",
         "/imgs/warning.png",
         "index.html"]
-}];
+    },
+    {"name": "jsons-arrays", "files": [
+        "/css/main.css",
+        "all.js",
+        "index.html"
+    ]},
+    {"name": "quest-thing", "files": [
+        "/css/main.css",
+        "/css/treejs/32px.png",
+        "/css/treejs/throbber.gif",
+        "/css/treejs/40px.png",
+        "/css/treejs/style.min.css",
+        "all.js",
+        "index.html",
+        "index-constructor.html"
+    ]},
+    {"name": "text-animation", "files": [
+        "/css/main.css",
+        "all.js",
+        "index.html"
+    ]},
+    {"name": "basic-tetris", "files": [
+        "tetris.js",
+        "index.html"
+    ]},{"name": "users", "files": []},
+    {"name": "base-python-app-for-web", "files": [], "url": "evgeniyvinokurov.pythonanywhere.com/feedback/"}
+];
 
 
 codesdir = "./js/demo/"

@@ -64,7 +64,11 @@ footerhtml = footerhtml.replace("#date#", today)
 projects = [
     {"name": "roach-race", "files": [], "url": "/race/"},
     {"name": "xmla", "files": [], "url": "/catalog/"},
-    {"name": "lottery-salt-emulator", "files": [], "url": "/all/"}
+    {"name": "veggy-farm", "files": []},
+    {"name": "python-scripts", "files": []},
+    {"name": "story-linker", "files": []},
+    {"name": "lottery-salt-emulator", "files": [], "url": "/all/"},
+    {"name": "base-python-app-for-web", "files": [], "url": "/feedback/"}
 ]
 
 
