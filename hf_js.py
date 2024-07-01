@@ -124,8 +124,7 @@ projects = [
         "tetris.js",
         "index.html"
     ]},
-    {"name": "users", "dirs": ["app"], "files": [], "baseUrl": "app/"},
-    {"name": "base-python-app-for-web", "files": [], "url": "http://evgeniyvinokurov.pythonanywhere.com/feedback/"}
+    {"name": "users", "dirs": ["app"], "files": [], "baseUrl": "app/"}
 ];
 
 
