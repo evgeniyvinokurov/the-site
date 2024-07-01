@@ -27,6 +27,10 @@ class MyHTMLParser(HTMLParser):
             self.captchure = False
             self.title = data
 
+def copy_and_overwrite(from_path, to_path):
+    if os.path.exists(to_path):
+        shutil.rmtree(to_path)
+    shutil.copytree(from_path, to_path)
 
 def getttile(file):
     with open(file, mode="r", encoding="utf-8") as f:
@@ -85,74 +89,21 @@ tdate = datetime.datetime.utcfromtimestamp(ti_m).strftime('%Y-%m-%d')
 # CODES 
 
 projects = [
-    {"name": "bus-tickets", "files": [
-        "/css/style.css",
-        "/imgs/down.png",
-        "/imgs/pattern.png",
+    {"name": "bus-tickets", "dirs": ["imgs", "css"],  "files": [
         "all.js",
         "index.html"
     ]},
-    {"name": "e-shop-client", "files": [
-        "/assets/style.css",
-        "/assets/img/1484.gif",
-        "/assets/img/favicon.png",
+    {"name": "e-shop-client", "dirs": ["assets"], "files": [
         "bundle.js",
         "index.html"
     ]},
-    {"name": "dances", "files": [
-        "all.js",
-        "/Bongos/hihat.wav",
-        "/Bongos/kick2.wav",
-        "/Bongos/kick.wav",
-        "/Bongos/snare.wav",
-        "/Bongos/tom12.wav",
-        "/Bongos/tom1.wav",
-        "/Bongos/tom2.wav",
-        "/Bongos/tom3.wav",
-        "/css/main.css",
-        "/fonts/basic/font-webfont.ttf",
-        "/fonts/basic/font-webfont.woff",
-        "/fonts/basic/font-webfont.woff2",
-        "/imgs/button1.png",
-        "/imgs/button2.png",
-        "/imgs/button3.png",
-        "/imgs/button4.png",
-        "/imgs/button5.png",
-        "/imgs/button6.png",
-        "/imgs/calendar.png",
-        "/imgs/checklist.png",
-        "/imgs/facebook.png",
-        "/imgs/footer_logo.png",
-        "/imgs/header_logo.png",
-        "/imgs/info_cats_2.png",
-        "/imgs/info_cats.png",
-        "/imgs/info.png",
-        "/imgs/phone.png",
-        "/imgs/pinterest.png",
-        "/imgs/placemark.png",
-        "/imgs/rss.png",
-        "/imgs/search.png",
-        "/imgs/share.png",
-        "/imgs/slider_cats_2.png",
-        "/imgs/slider_cats_3.png",
-        "/imgs/slider_cats.png",
-        "/imgs/tam1.png",
-        "/imgs/tam2.png",
-        "/imgs/tam3.png",
-        "/imgs/tam4.png",
-        "/imgs/tam5.png",
-        "/imgs/tam6.png",
-        "/imgs/tam7.png",
-        "/imgs/tam8.png",
-        "/imgs/totheleft.png",
-        "/imgs/totheright.png",
-        "/imgs/translation.png",
-        "/imgs/twitter.png",
-        "/imgs/ufo2.png",
-        "/imgs/ufocats.png",
-        "/imgs/ufo.png",
-        "/imgs/ukulele.png",
-        "/imgs/warning.png",
+    {"name": "dances", "dirs": [
+        "Bongos",
+        "css",
+        "fonts",
+        "imgs"
+        ], "files": [
+        "all.js",        
         "index.html"]
     },
     {"name": "jsons-arrays", "files": [
@@ -160,33 +111,21 @@ projects = [
         "all.js",
         "index.html"
     ]},
-    {"name": "quest-thing", "files": [
-        "/css/main.css",
-        "/css/treejs/32px.png",
-        "/css/treejs/throbber.gif",
-        "/css/treejs/40px.png",
-        "/css/treejs/style.min.css",
+    {"name": "quest-thing", "dirs": ["css"], "files": [
         "all.js",
         "index.html",
         "index-constructor.html"
     ]},
-    {"name": "text-animation", "files": [
-        "/css/main.css",
+    {"name": "text-animation", "dirs": ["css"], "files": [
         "all.js",
         "index.html"
     ]},
     {"name": "basic-tetris", "files": [
         "tetris.js",
         "index.html"
-    ]},{"name": "users", "files": [
-        "/app/assets/MOCK_DATA.json",
-        "/app/favicon.ico",
-        "/app/index.html",
-        "/app/main-3JO4DNX4.js",
-        "/app/polyfills-6EAL64PA.js",
-        "/app/styles-BJXQGC3E.css",
-    ], "baseUrl": "app/"},
-    {"name": "base-python-app-for-web", "files": [], "url": "evgeniyvinokurov.pythonanywhere.com/feedback/"}
+    ]},
+    {"name": "users", "dirs": ["app"], "files": [], "baseUrl": "app/"},
+    {"name": "base-python-app-for-web", "files": [], "url": "http://evgeniyvinokurov.pythonanywhere.com/feedback/"}
 ];
 
 
@@ -207,6 +146,10 @@ for p in projects:
         oldfile = str(projectsdir) + "/" + p["name"] + "/" + f
         print("copied " + p["name"] + " " + f)
         shutil.copyfile(oldfile, file)
+    if "dirs" in p:
+        for d in p["dirs"]:
+            dir = codesdir + "/" + p["name"] + "/" + d
+            copy_and_overwrite(str(projectsdir) + "/" + p["name"] + "/" + d, dir)
     oldimgfile = str(projectsdir) + "/" + p["name"] + "/" + p["name"] + ".jpg"
     newimgfile = codesdir + p["name"] + ".jpg"
     shutil.copyfile(oldimgfile, newimgfile)
@@ -227,7 +170,7 @@ for p in projects:
         imgpath = "/demo/" + file + ".jpg"
         htmlcodes += "<a href='" + imgpath + "'><img width='300px' src='" + imgpath +"'/></a>"
         htmlcodes += "<li>" + "<a class='link' href='https://gitflic.ru/project/evgeniyvinokurov/" + file + "/'>gitflic</a>"
-        if len(p["files"]) > 0:
+        if len(p["files"]) > 0 or "dirs" in p:
             htmlcodes += "&nbsp;&nbsp;<a class='link' href='/demo/" + file + "/" + (p["baseUrl"] if "baseUrl" in p else "") + "'>demo</a>"
         if "url" in p:
             htmlcodes += "&nbsp;&nbsp;<a class='link' href='" + p["url"] + "'>demo</a>"        
