@@ -5,11 +5,67 @@
 				<li><a class="link" href="https://gitflic.ru/user/evgeniyvinokurov">Gitflic</a></li>
 				<li><a class="link" href="mailto:evgeniy.vinokuroff@yandex.ru">Mail</a></li>
 				<li><a class="link" href="https://arkhangelsk.hh.ru/resume/8af77502ff0232226d0039ed1f373737785438">Резюме</a></li>
-        		<li><a class="link" href="https://hot-cloth.surge.sh/">Js</a></li>
-        		<li><a class="link" href="http://evgeniyvinokurov.pythonanywhere.com/">Python</a></li>
 				<li> Last updated: #date#</li>
 			</ul>
 		</div>	
+
+		<script type="text/javascript">
+			function shuffleArray(array) {
+				for (let i = array.length - 1; i > 0; i--) {
+					const j = Math.floor(Math.random() * (i + 1));
+					[array[i], array[j]] = [array[j], array[i]];
+				}
+			}
+
+			function doTag(tag) {
+				for (d of document.querySelectorAll("div.project")){
+					d.classList.remove("hide")
+				}
+
+				for (d of document.querySelectorAll("div.project:not(." + tag + ")")){
+					d.classList.add("hide")
+				}
+			}
+
+			document.addEventListener("DOMContentLoaded", (event) => {  
+				const searchParams = new URLSearchParams(window.location.search);
+				let tag = searchParams.get('tag');
+
+
+				let projects = document.querySelectorAll(".project");				
+				let tagList = [];
+
+				for (let p of projects) {
+					let classNames =  p.className.split(" ")
+					for (let c of classNames) {
+						if (tagList.indexOf(c) === -1 && c !== "project") {
+							tagList.push(c);
+						}						
+					}
+				}
+
+				shuffleArray(tagList);
+
+				if (tagList.indexOf(tag) !== -1) {
+					doTag(tag);
+				}
+
+				let tagsEl = document.querySelector(".tags");
+
+				for (let tag of tagList) {
+					tagsEl.innerHTML += "<div class='tag'>" + tag + "</div>"
+ 				}
+
+				let tags = document.querySelectorAll(".tag");
+
+				for (let t of tags) {
+					t.addEventListener("click", function(e){
+						doTag(this.innerHTML);
+						history.pushState({}, "", "/?tag=" + this.innerHTML);
+					})
+				}
+			});
+		</script>
 	</div>		
 </div>	
 </body>
