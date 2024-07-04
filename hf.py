@@ -131,7 +131,7 @@ projects = [
     {"name": "roach-race", "tags": ["python", "vanillajs", "xml", "bottle"], "files": [], "url": "http://evgeniyvinokurov.pythonanywhere.com/race/"},
     {"name": "xmla", "tags": ["python", "vanillajs", "xml", "bottle", "catalog", "cart", "markup", "pytest", "selenium", "docker"], "files": [], "url": "http://evgeniyvinokurov.pythonanywhere.com/catalog/"},
     {"name": "veggy-farm", "tags": ["python", "gulp", "webpack", "django", "catalog", "markup", "docker", "sqlite", "sass", "jquery", "vuejs"], "files": []},
-    {"name": "python-scripts", "tags": ["python", "eightball", "ffmpeg", "moviepy", "mp4"], "files": []},
+    {"name": "python-scripts", "video": "true", "tags": ["python", "eightball", "ffmpeg", "moviepy", "mp4"], "files": []},
     {"name": "story-linker", "tags": ["python", "fastapi", "pika", "vanillajs"], "files": []},
     {"name": "lottery-salt-emulator", "tags": ["python", "bottle", "xml", "vanillajs", "eightball"], "files": [], "url": "http://evgeniyvinokurov.pythonanywhere.com/all/"},
     {"name": "base-python-app-for-web", "tags": ["python", "bottle", "xml", "vuejs", "markup"], "files": [], "url": "http://evgeniyvinokurov.pythonanywhere.com/feedback/"}
@@ -159,10 +159,16 @@ for p in projects:
         for d in p["dirs"]:
             dir = codesdir + "/" + p["name"] + "/" + d
             copy_and_overwrite(str(projectsdir) + "/" + p["name"] + "/" + d, dir)
-    oldimgfile = str(projectsdir) + "/" + p["name"] + "/" + p["name"] + ".jpg"
-    newimgfile = codesdir + p["name"] + ".jpg"
-    shutil.copyfile(oldimgfile, newimgfile)
-    print("copied " + oldimgfile)
+    if "video" not in p:    
+        oldimgfile = str(projectsdir) + "/" + p["name"] + "/" + p["name"] + ".jpg"
+        newimgfile = codesdir + p["name"] + ".jpg"
+        shutil.copyfile(oldimgfile, newimgfile)
+        print("copied " + oldimgfile)
+    else:        
+        oldvidfile = str(projectsdir) + "/" + p["name"] + "/" + p["name"] + ".mp4"
+        newimgfile = codesdir + p["name"] + ".mp4"
+        shutil.copyfile(oldvidfile, newimgfile)
+        print("copied " + oldvidfile)
 
 beginhtml = '''<div class="text-codes"><p class="content-text__title">
         </p>'''
@@ -175,8 +181,12 @@ for p in projects:
     file = p["name"] 
     if not os.path.isfile(file):
         htmlcodes += "<div class='project " + " ".join(p["tags"]) + "'><p>" + contentfrontproj[file] 
-        imgpath = "/demo/" + file + ".jpg"
-        htmlcodes += "<a href='" + imgpath + "'><img width='300px' src='" + imgpath +"'/></a>"
+        if "video" not in p:
+            imgpath = "/demo/" + file + ".jpg"
+            htmlcodes += "<a href='" + imgpath + "'><img width='300px' src='" + imgpath +"'/></a>"
+        else:
+            videosrc = "/demo/" + file + ".mp4"
+            htmlcodes += "<video controls width='250'><source src='" + videosrc + "' type='video/mp4' /></video>"
         htmlcodes += "<li>" + "<a class='link' href='https://gitflic.ru/project/evgeniyvinokurov/" + file + "/'>gitflic</a>"
         if len(p["files"]) > 0 or "dirs" in p:
             htmlcodes += "&nbsp;&nbsp;<a class='link' href='/demo/" + file + "/" + (p["baseUrl"] if "baseUrl" in p else "") + "'>demo</a>"
