@@ -194,13 +194,12 @@ beginhtml = '''<div class='inner-brief'><p>
 endhtml = '''
         </div></div>'''
 
-morehtml = "<div class='tags'></div><div class='projects'>"
+morehtml = "<h3 class='more'>More</h3><div class='tags'></div><div class='projects'>"
 
 
 codesdir = "./demo/"
 htmlcodes = "" 
 
-random.shuffle(pwis)
 pwihtml = []
 
 for p in pwis: 

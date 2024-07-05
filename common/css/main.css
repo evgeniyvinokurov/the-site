@@ -190,7 +190,7 @@ h3 {
 
 .projects {
   height: 500px;
-  width: 820px;
+  width: 720px;
   overflow: scroll;
   margin-left: 20px;
 }
@@ -210,4 +210,11 @@ h3 {
 img, video {
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+h3.more {
+  font-family: 'ff', sans-serif;
+  font-size: 14px;
+  margin-left: 10px;
+
 }
