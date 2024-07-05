@@ -7,6 +7,7 @@ import time
 import datetime
 import zipfile
 import random
+import json
 
 
 # TEXT FUNCTIONS
@@ -46,12 +47,16 @@ today = str(date.today())
 
 # HEADER AND FOOTER
 
-footerfile = "./files/footer.html"
-headerfile = "./files/header.html"
+footerfile = "./sources/footer.html"
+headerfile = "./sources/header.html"
+morefile = "./sources/more.html"
+indexfile = "./sources/index.html"
 
 
 footerhtml = ""
 headerhtml = ""
+morefilehtml = ""
+indexfilehtml = ""
 
 with open(headerfile, mode="r", encoding="utf-8") as f:
     headerhtml = f.read()
@@ -59,13 +64,19 @@ with open(headerfile, mode="r", encoding="utf-8") as f:
 with open(footerfile, mode="r", encoding="utf-8") as f:
     footerhtml = f.read()
 
+with open(morefile, mode="r", encoding="utf-8") as f:
+    morefilehtml = f.read()
+
+with open(indexfile, mode="r", encoding="utf-8") as f:
+    indexfilehtml = f.read()
+
 footerhtml = footerhtml.replace("#date#", today)
 
 
 
 # FAQ INDEX
     
-faqfilemain = "./files/faq/index.html"
+faqfilemain = "./sources/faq/index.html"
 faqhtml = ""
 
 with open(faqfilemain, mode="r", encoding="utf-8") as f:
@@ -142,13 +153,15 @@ codesdir = "./common/demo/"
 projectsdir = "../projects/"
 
 contentfrontproj = {}
+pwis = []
 
 for p in projects: 
+    pwi = p
     with open(str(projectsdir) + "/" + p["name"] + "/README.md", mode="r", encoding="utf-8") as f:  
         lines = list(f)
         strlines = lines[1:len(lines)]            
         contentstr = "".join(strlines)
-        contentfrontproj[p["name"]] = "<h2>" + lines[0] + "</h2>" + contentstr.replace("  ", "</br>")  + "</br></br>"
+        pwi["content"] = "<h2>" + lines[0] + "</h2>" + contentstr.replace("  ", "</br>")
     for f in p["files"]:
         file = codesdir + "/" + p["name"] + "/" + f       
         os.makedirs(os.path.dirname(file), exist_ok=True)
@@ -169,44 +182,76 @@ for p in projects:
         newimgfile = codesdir + p["name"] + ".mp4"
         shutil.copyfile(oldvidfile, newimgfile)
         print("copied " + oldvidfile)
+    pwis.append(pwi)
 
-beginhtml = '''<div class="text-codes"><p class="content-text__title">
-        </p>'''
+beginhtml = '''<div class='inner-brief'><p>
+							Приветствую Вас на моем сайте, меня зовут Евгений, и я - программист; здесь располагаются примеры моих работ. 
+						</p>
+						<p>
+							Если Вы хотите предложить мне работу: <a class="link" href="/faq/index.html">Faq</a>, <a class="link" href="https://gitflic.ru/user/evgeniyvinokurov">Gitflic</a>, <a class="link" href="mailto:evgeniy.vinokuroff@yandex.ru">Mail</a>, <a class="link" href="https://arkhangelsk.hh.ru/resume/8af77502ff0232226d0039ed1f373737785438">Резюме</a>
+                        </p>
+						<div class='inner-brief__project'>'''
 endhtml = '''
-        </div>'''
+        </div></div>'''
+
+morehtml = "<div class='tags'></div><div class='projects'>"
+
 
 codesdir = "./demo/"
-htmlcodes = "<ul class='clilist'>" 
-for p in projects: 
+htmlcodes = "" 
+
+random.shuffle(pwis)
+pwihtml = []
+
+for p in pwis: 
+    pwiht = p
     file = p["name"] 
+    pwiht['htmlcodes'] = ""
     if not os.path.isfile(file):
-        htmlcodes += "<div class='project " + " ".join(p["tags"]) + "'><p>" + contentfrontproj[file] 
+        pwiht['htmlcodes'] += "<div class='project " + " ".join(p["tags"]) + "'><p><div>" + p["content"] + "</div>"
         if "video" not in p:
             imgpath = "/demo/" + file + ".jpg"
-            htmlcodes += "<a href='" + imgpath + "'><img width='300px' src='" + imgpath +"'/></a>"
+            pwiht['htmlcodes'] += "<a href='" + imgpath + "'><img width='300px' src='" + imgpath +"'/></a>"
         else:
             videosrc = "/demo/" + file + ".mp4"
-            htmlcodes += "<video controls width='250'><source src='" + videosrc + "' type='video/mp4' /></video>"
-        htmlcodes += "<li>" + "<a class='link' href='https://gitflic.ru/project/evgeniyvinokurov/" + file + "/'>gitflic</a>"
+            pwiht['htmlcodes'] += "<video controls width='250'><source src='" + videosrc + "' type='video/mp4' /></video>"
+        pwiht['htmlcodes'] += "<li>" + "<a class='link' href='https://gitflic.ru/project/evgeniyvinokurov/" + file + "/'>gitflic</a>"
         if len(p["files"]) > 0 or "dirs" in p:
-            htmlcodes += "&nbsp;&nbsp;<a class='link' href='/demo/" + file + "/" + (p["baseUrl"] if "baseUrl" in p else "") + "'>demo</a>"
+            pwiht['htmlcodes'] += "&nbsp;&nbsp;<a class='link' href='/demo/" + file + "/" + (p["baseUrl"] if "baseUrl" in p else "") + "'>demo</a>"
         if "url" in p:
-            htmlcodes += "&nbsp;&nbsp;<a class='link' href='" + p["url"] + "'>demo</a>"        
-        htmlcodes += "</li>" + "</p></div>"
-htmlcodes += "</ul>"
+            pwiht['htmlcodes'] += "&nbsp;&nbsp;<a class='link' href='" + p["url"] + "'>demo</a>"        
+        pwiht['htmlcodes'] += "</li>" + "</p></div>"
+    pwihtml.append(pwiht)
+
+jsonps = json.dumps(pwihtml)
+
+for p in pwihtml: 
+    morehtml += p['htmlcodes'] 
+
+morehtml += "</div>"
+
 
 preimgindexfile = "./common/index.html"
 os.makedirs(os.path.dirname(preimgindexfile), exist_ok=True)
-indexpreimghtml =  headerhtml + beginhtml + htmlcodes + endhtml + footerhtml
-
+indexpreimghtml =  headerhtml + beginhtml + "<script type='text/javascript'> let projects = " + jsonps + ";</script>"+ endhtml + indexfilehtml + footerhtml
 
 with open(preimgindexfile, mode="w", encoding="utf-8") as f:
     f.write(indexpreimghtml) 
     print("written: " + preimgindexfile)
 
 
+morefile = "./common/more.html"
+os.makedirs(os.path.dirname(morefile), exist_ok=True)
+indexpreimghtml =  headerhtml + morehtml +  morefilehtml + footerhtml
+
+
+with open(morefile, mode="w", encoding="utf-8") as f:
+    f.write(indexpreimghtml) 
+    print("written: " + morefile)
+
+
 precssfile = "./common/css/main.css"
 os.makedirs(os.path.dirname(precssfile), exist_ok=True)
-shutil.copyfile("./css/main.css", precssfile)
+shutil.copyfile("./sources/css/main.css", precssfile)
 print("css copied")
 

@@ -1,27 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-      <title>Evgeniy Vinokurov - Web Developer</title>
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">  	
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-	    <meta name="description" content="Сайт примеров работ Винокурова Евгения. Около ИТ. Микроновеллы, тексты, коды."/>
-	    <meta name="keywords" content="Evgeniy Vinokurov, Web Developer, Евгений Винокуров Программист, Программист веб, Бэкенд разработчик, микроновеллы, тексты, концепт арт, копирайт, скетчи, код" />
-      <link rel="stylesheet" type="text/css" href="/css/main.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Евгений Винокуров, программист</title>
+  	<meta name="Keywords" content="Евгений Винокуров, Evgenii Vinokurov, Evgeniy Vinokurov, Евгений Винокуров ВКонтакте, Евгений Винокуров Одноклассники, Бесплатные сайты, Резюме Евгений Винокуров, Евгений Винокуров программист">
+    <meta name="description" content="Сайт программиста Евгения Винокурова. Евгений Винокуров программист."> 
+	<link rel="shortcut icon" type="image/png" href="/favicon.png"/>
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+	<script type="text/javascript" src="/all.js"></script>
+	<script type="text/javascript" src="/background.js"></script>
+
 </head>
-<body><div class="site">		
-  <div class="site__content">
-    <div class="" id="">
-      <div class="" id="">
-        <div class="">
-          <a class="link" href="/">
-            <div class="rubric sitelogo">Евгений Винокуров</div>
-            <div class=" prof">Программист <span title="с 2010 года">*</span></div>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="tags"></div><div class='faq'><div class="title">&#127285;&#127280;&#129488;&#127296;</div>
+<body>
+	<div class="site">
+		<!-- Content block -->
+		<div class="site__content">
+			<div class="articles" id="articles">
+				<div class="article" id="samples">
+					<div class="brief">
+						<a class="link" href="/">
+							<div class="rubric">Site of Evgeniy Vinokurov</div>
+							<div class="title">:-)</div>
+						</a>
+					</div><div class='faq'><script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", (event) => {  
+        let innerHTML = document.body.innerHTML;
+        document.body.innerHTML = "<img src='" + PicsService.finallyGetPicUrl().final + "' style='position:absolute;z-index:-1;'/>" + innerHTML;
+    })
+</script>
+<div class="faq-title">&#127285;&#127280;&#129488;&#127296;</div>
 <div class="text que-faq-text">
 	<p class="que">- какой твой опыт суммарно?</p>
 	<p class="ans">- суммарно мой опыт коммерческой разработки около 8 лет, при этом в информационные технологии я попал в 2004, и были перерывы, поэтому полезный опыт и общий результат впринципе сложно измерить.</p>
@@ -33,75 +41,31 @@
 	<p class="ans">- в целом я ищу разную работу около ИТ, где могут пригодиться и диплом и предыдущий опыт работы, не интересуют работа в сетевом маркетинге, колл центрах или места, где всему обучают на месте. У меня есть портфолио скетч-артиста, и писательский профиль (тескты, стихи). Меня обрадует работа сценаристом, дизайнером, возможно даже менеджером в проектах около ИТ. Но прежде всего я конечно хочу работу программиста</p>
 </div>
 					
-</div>
-		<div class="site__stripe-links">
-			<ul>			
-				<li><a class="link" href="/faq/index.html">Faq</a></li>
-				<li><a class="link" href="https://gitflic.ru/user/evgeniyvinokurov">Gitflic</a></li>
-				<li><a class="link" href="mailto:evgeniy.vinokuroff@yandex.ru">Mail</a></li>
-				<li><a class="link" href="https://arkhangelsk.hh.ru/resume/8af77502ff0232226d0039ed1f373737785438">Резюме</a></li>
-				<li> Last updated: 2024-07-04</li>
-			</ul>
-		</div>	
-
-		<script type="text/javascript">
-			function shuffleArray(array) {
-				for (let i = array.length - 1; i > 0; i--) {
-					const j = Math.floor(Math.random() * (i + 1));
-					[array[i], array[j]] = [array[j], array[i]];
-				}
-			}
-
-			function doTag(tag) {
-				for (d of document.querySelectorAll("div.project")){
-					d.classList.remove("hide")
-				}
-
-				for (d of document.querySelectorAll("div.project:not(." + tag + ")")){
-					d.classList.add("hide")
-				}
-			}
-
-			document.addEventListener("DOMContentLoaded", (event) => {  
-				const searchParams = new URLSearchParams(window.location.search);
-				let tag = searchParams.get('tag');
+</div><div class="text__date"><p>Last updated: </p><div class="date">2024-07-05</div>
+					</div>
+					
+					<!--<div>-->
+     <!--           <div class="footer__lj">-->
+     <!--               <img src="/grass.jpg" width="600px"><a href="https://www.vecteezy.com/free-vector/grass">Grass Vectors by Vecteezy</a>-->
+     <!--           </div>-->
+     <!--   </div>-->
+				</div>
 
 
-				let projects = document.querySelectorAll(".project");				
-				let tagList = [];
+			</div>
 
-				for (let p of projects) {
-					let classNames =  p.className.split(" ")
-					for (let c of classNames) {
-						if (tagList.indexOf(c) === -1 && c !== "project") {
-							tagList.push(c);
-						}						
-					}
-				}
+			
+				<div class="site__stripe site__stripe--main js-stripe">
+					<div class="site__stripe-links">
+						<ul>			
+							<li>- <a class="link" href="/more.html">More</a></li>
+						</ul>
+					</div>	
+				</div>
 
-				shuffleArray(tagList);
-
-				if (tagList.indexOf(tag) !== -1) {
-					doTag(tag);
-				}
-
-				let tagsEl = document.querySelector(".tags");
-
-				for (let tag of tagList) {
-					tagsEl.innerHTML += "<div class='tag'>" + tag + "</div>"
- 				}
-
-				let tags = document.querySelectorAll(".tag");
-
-				for (let t of tags) {
-					t.addEventListener("click", function(e){
-						doTag(this.innerHTML);
-						history.pushState({}, "", "/?tag=" + this.innerHTML);
-					})
-				}
-			});
-		</script>
-	</div>		
-</div>	
+                
+		</div>
+	</div>	
+    
 </body>
 </html>
