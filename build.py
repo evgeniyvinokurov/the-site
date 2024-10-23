@@ -117,7 +117,7 @@ projects = [
         "all.js",        
         "index.html"]
     },
-    {"name": "jsons-arrays", "tags": ["json", "js"], "files": [
+    {"name": "jsons-arrays", "tags": ["json", "js", "import"], "files": [
         "/css/main.css",
         "all.js",
         "index.html"
@@ -140,7 +140,7 @@ projects = [
     {"name": "get-your-song", "tags": ["php", "random"], "files": [], "url": "http://www.evgeniyvinokurov.byethost9.com/get-your-song/"},
     {"name": "api-calls", "tags": ["php", "api"], "files": [], "url": "http://www.evgeniyvinokurov.byethost9.com/api-calls/"},
     {"name": "roach-race", "tags": ["python", "vanillajs", "xml", "bottle"], "files": [], "url": "http://evgeniyvinokurov.pythonanywhere.com/race/"},
-    {"name": "xmla", "tags": ["python", "vanillajs", "xml", "bottle", "catalog", "cart", "markup", "pytest", "selenium", "docker"], "files": [], "url": "http://evgeniyvinokurov.pythonanywhere.com/catalog/"},
+    {"name": "xmla", "tags": ["python", "vanillajs", "xml", "bottle", "catalog", "cart", "markup", "pytest", "selenium", "docker", "import"], "files": [], "url": "http://evgeniyvinokurov.pythonanywhere.com/catalog/"},
     {"name": "veggy-farm", "tags": ["python", "gulp", "webpack", "django", "catalog", "markup", "docker", "sqlite", "sass", "jquery", "vuejs"], "files": []},
     {"name": "python-scripts", "video": "true", "tags": ["python", "random", "ffmpeg", "moviepy", "mp4"], "files": []},
     {"name": "story-linker", "tags": ["python", "fastapi", "pika", "vanillajs"], "files": []},
