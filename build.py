@@ -100,15 +100,15 @@ tdate = datetime.datetime.utcfromtimestamp(ti_m).strftime('%Y-%m-%d')
 # CODES 
 
 projects = [
-    {"name": "bus-tickets", "tags": ["js", "markup", "gulp"], "dirs": ["imgs", "css"],  "files": [
+    {"name": "bus-tickets", "tags": ["js", "markup"], "dirs": ["imgs", "css"],  "files": [
         "all.js",
         "index.html"
     ]},
-    {"name": "e-shop-client", "tags": ["js", "markup", "webpack", "catalog", "cart", "vuejs", "canvas", "sass", "random"], "dirs": ["assets"], "files": [
+    {"name": "e-shop-client", "tags": ["js", "markup", "catalog", "vuejs", "canvas"], "dirs": ["assets"], "files": [
         "bundle.js",
         "index.html"
     ]},
-    {"name": "dances", "tags": ["js", "markup", "ymaps", "svg", "gulp", "jquery", "sass"], "dirs": [
+    {"name": "dances", "tags": ["js", "markup", "ymaps", "svg", "jquery"], "dirs": [
         "Bongos",
         "css",
         "fonts",
@@ -135,16 +135,20 @@ projects = [
         "tetris.js",
         "index.html"
     ]},
-    {"name": "users","tags": ["js", "angular", "material", "typescript", "markup", "sass"], "dirs": ["app"], "files": [], "baseUrl": "app/"},
-    {"name": "deezer-api-albums-php", "tags": ["php", "sqlite", "api", "deezer", "sql"], "files": [], "url": "http://www.evgeniyvinokurov.byethost9.com/albums/"},
-    {"name": "get-your-song", "tags": ["php", "random"], "files": [], "url": "http://www.evgeniyvinokurov.byethost9.com/get-your-song/"},
+    {"name": "random-place","tags": ["js", "ymaps"], "files": [
+        "all.js",
+        "index.html"
+    ], "dirs": ["imgs", "fonts", "css"], "github": True },
+    {"name": "users","tags": ["js", "angular", "markup"], "dirs": ["app"], "files": [], "baseUrl": "app/"},
+    {"name": "deezer-api-albums-php", "tags": ["php", "sqlite", "api", "sql"], "files": [], "url": "http://www.evgeniyvinokurov.byethost9.com/albums/"},
+    {"name": "get-your-song", "tags": ["php"], "files": [], "url": "http://www.evgeniyvinokurov.byethost9.com/get-your-song/"},
     {"name": "api-calls", "tags": ["php", "api"], "files": [], "url": "http://www.evgeniyvinokurov.byethost9.com/api-calls/"},
-    {"name": "roach-race", "tags": ["python", "vanillajs", "xml", "bottle"], "files": [], "url": "http://evgeniyvinokurov.pythonanywhere.com/race/"},
-    {"name": "xmla", "tags": ["python", "vanillajs", "xml", "bottle", "catalog", "cart", "markup", "pytest", "selenium", "docker", "import"], "files": [], "url": "http://evgeniyvinokurov.pythonanywhere.com/catalog/"},
-    {"name": "veggy-farm", "tags": ["python", "gulp", "webpack", "django", "catalog", "markup", "docker", "sqlite", "sass", "jquery", "vuejs"], "files": []},
-    {"name": "python-scripts", "video": "true", "tags": ["python", "random", "ffmpeg", "moviepy", "mp4"], "files": []},
-    {"name": "story-linker", "tags": ["python", "fastapi", "pika", "vanillajs"], "files": []},
-    {"name": "lottery-salt-emulator", "tags": ["python", "bottle", "xml", "vanillajs", "random"], "files": [], "url": "http://evgeniyvinokurov.pythonanywhere.com/all/"},
+    {"name": "roach-race", "tags": ["python", "js", "xml", "bottle", "markup"], "files": [], "url": "http://evgeniyvinokurov.pythonanywhere.com/race/"},
+    {"name": "xmla", "tags": ["python", "js", "xml", "bottle", "catalog", "markup", "tests", "docker", "import"], "files": [], "url": "https://evgeniyvinokurov.pythonanywhere.com/catalog/"},
+    {"name": "veggy-farm", "tags": ["python", "django", "catalog", "markup", "docker", "sqlite"], "files": []},
+    {"name": "python-scripts", "video": "true", "tags": ["python", "ffmpeg"], "files": []},
+    {"name": "story-linker", "tags": ["python", "js"], "files": []},
+    {"name": "lottery-salt-emulator", "tags": ["python", "bottle", "xml", "js"], "files": []},
     {"name": "base-python-app-for-web", "tags": ["python", "bottle", "xml", "vuejs", "markup"], "files": [], "url": "http://evgeniyvinokurov.pythonanywhere.com/feedback/"}
 ];
 
@@ -218,7 +222,11 @@ for p in pwis:
         else:
             videosrc = "/demo/" + file + ".mp4"
             pwiht['htmlcodes'] += "<video controls width='250'><source src='" + videosrc + "' type='video/mp4' /></video>"
-        pwiht['htmlcodes'] += "<li>" + "<a class='link' href='https://gitflic.ru/project/evgeniyvinokurov/" + file + "/'>gitflic</a>"
+        if "github" not in p:
+            glink = "<a class='link' href='https://gitflic.ru/project/evgeniyvinokurov/" + file + "/'>gitflic</a>"
+        else:
+            glink = "<a class='link' href='https://github.com/evgeniyvinokurov/" + file + "'>github</a>"
+        pwiht['htmlcodes'] += "<li>" + glink
         if len(p["files"]) > 0 or "dirs" in p:
             pwiht['htmlcodes'] += "&nbsp;&nbsp;<a class='link' href='/demo/" + file + "/" + (p["baseUrl"] if "baseUrl" in p else "") + "'>demo</a>"
         if "url" in p:

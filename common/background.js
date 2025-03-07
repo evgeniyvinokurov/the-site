@@ -1,6 +1,6 @@
 let fillers = ['line'];
 let width = 820;
-let height = 600;
+let height = 851;
 let tempImages = [];
 let canvas = document.createElement('canvas');
 

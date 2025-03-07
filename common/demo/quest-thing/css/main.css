@@ -21,7 +21,7 @@ body {
 }
 
 .controls {
-  margin-top: 100px;
+  margin-top: 10px;
 }
 .controls__item {
   display: inline-block;
@@ -29,6 +29,11 @@ body {
 }
 .controls__item--export-import {
   width: 280px;
+  vertical-align: top;
+}
+.controls__item--tree {
+  height: 400px;
+  overflow: scroll;
 }
 
 .edit_mode_on {
@@ -105,15 +110,6 @@ ul {
 
 .item {
   position: relative;
-}
-
-.fixed_controls {
-  background-color: white;
-  position: fixed;
-  top: 70px;
-  left: 10px;
-  width: 250px;
-  border: none;
 }
 
 .instructions {
