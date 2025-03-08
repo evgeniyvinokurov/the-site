@@ -107,7 +107,7 @@ projects = [
     {"name": "e-shop-client", "tags": ["js", "markup", "catalog", "vuejs", "canvas"], "dirs": ["assets"], "files": [
         "bundle.js",
         "index.html"
-    ]},
+    ], "github": True},
     {"name": "dances", "tags": ["js", "markup", "ymaps", "svg", "jquery"], "dirs": [
         "Bongos",
         "css",
