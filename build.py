@@ -108,15 +108,6 @@ projects = [
         "bundle.js",
         "index.html"
     ], "github": True},
-    {"name": "dances", "tags": ["js", "markup", "ymaps", "svg", "jquery"], "dirs": [
-        "Bongos",
-        "css",
-        "fonts",
-        "imgs"
-        ], "files": [
-        "all.js",        
-        "index.html"]
-    },
     {"name": "jsons-arrays", "tags": ["json", "js", "import"], "files": [
         "/css/main.css",
         "all.js",
@@ -135,25 +126,16 @@ projects = [
         "tetris.js",
         "index.html"
     ]},
-    {"name": "random-place","tags": ["js", "ymaps"], "files": [
-        "all.js",
-        "index.html"
-    ], "dirs": ["imgs", "fonts", "css"], "github": True },
     {"name": "users","tags": ["js", "angular", "markup"], "dirs": ["app"], "files": [], "baseUrl": "app/"},
-    {"name": "deezer-api-albums-php", "tags": ["php", "sqlite", "api", "sql"], "files": [], "url": "http://www.evgeniyvinokurov.byethost9.com/albums/"},
-    {"name": "get-your-song", "tags": ["php"], "files": [], "url": "http://www.evgeniyvinokurov.byethost9.com/get-your-song/"},
-    {"name": "api-calls", "tags": ["php", "api"], "files": [], "url": "http://www.evgeniyvinokurov.byethost9.com/api-calls/"},
+    {"name": "deezer-api-albums-php", "tags": ["php", "sqlite", "api", "sql"], "files": [], "url": "http://www.evgeniyvinokurov.byethost9.com/albums/", "github": True},
     {"name": "roach-race", "tags": ["python", "js", "xml", "bottle", "markup"], "files": [], "url": "http://evgeniyvinokurov.pythonanywhere.com/race/"},
     {"name": "xmla", "tags": ["python", "js", "xml", "bottle", "catalog", "markup", "tests", "docker", "import"], "files": [], "url": "https://evgeniyvinokurov.pythonanywhere.com/catalog/"},
-    {"name": "veggy-farm", "tags": ["python", "django", "catalog", "markup", "docker", "sqlite"], "files": []},
-    {"name": "python-scripts", "video": "true", "tags": ["python", "ffmpeg"], "files": []},
-    {"name": "story-linker", "tags": ["python", "js"], "files": []},
-    {"name": "lottery-salt-emulator", "tags": ["python", "bottle", "xml", "js"], "files": []},
+    {"name": "veggy-farm", "tags": ["python", "django", "catalog", "markup", "docker", "sqlite"], "files": [], "github": True},
     {"name": "base-python-app-for-web", "tags": ["python", "bottle", "xml", "vuejs", "markup"], "files": [], "url": "http://evgeniyvinokurov.pythonanywhere.com/feedback/"}
 ];
 
 projectsshort = [
-    "bus-tickets", "users", "roach-race", "xmla", "veggy-farm", "python-scripts", "quest-thing"
+    "bus-tickets", "users", "roach-race", "xmla", "veggy-farm", "quest-thing"
 ]
  
 
@@ -196,7 +178,7 @@ beginhtml = '''<div class='inner-brief'><p>
 							Приветствую Вас на моем сайте, меня зовут Евгений, и я - программист; здесь располагаются примеры моих работ. 
 						</p>
 						<p>
-							Если Вы хотите предложить мне работу: <a class="link" href="/faq/index.html">Faq</a>, <a class="link" href="https://gitflic.ru/user/evgeniyvinokurov">Gitflic</a>, <a class="link" href="mailto:evgeniy.vinokuroff@yandex.ru">Mail</a>, <a class="link" href="https://arkhangelsk.hh.ru/resume/8af77502ff0232226d0039ed1f373737785438">Резюме</a>
+							Если Вы хотите предложить мне работу: <a class="link" href="/faq/index.html">Faq</a>,  <a class="link" href="https://github.com/evgeniyvinokurov">Github</a>, <a class="link" href="mailto:evgeniy.vinokuroff@yandex.ru">Mail</a>, <a class="link" href="https://arkhangelsk.hh.ru/resume/8af77502ff0232226d0039ed1f373737785438">Резюме</a>
                         </p>
 						<div class='inner-brief__project'>'''
 endhtml = '''
