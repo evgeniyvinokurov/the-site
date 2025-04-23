@@ -114,6 +114,7 @@ projects = [
         "index.html"
     ], "github": True},
     {"name": "users","tags": ["js", "angular", "markup"], "dirs": ["app"], "files": [], "baseUrl": "app/", "github": True},
+    {"name": "laravel-sample", "tags": ["php", "sqlite", "api", "sql", "laravel"], "files": [], "github": True},
     {"name": "deezer-api-albums-php", "tags": ["php", "sqlite", "api", "sql"], "files": [], "url": "http://www.evgeniyvinokurov.byethost9.com/albums/", "github": True},
     {"name": "xmla", "tags": ["python", "js", "xml", "bottle", "catalog", "markup", "tests", "docker", "import"], "files": [], "url": "https://evgeniyvinokurov.pythonanywhere.com/catalog/", "github": True},
     {"name": "veggy-farm", "tags": ["python", "django", "catalog", "markup", "docker", "sqlite"], "files": [], "github": True},
