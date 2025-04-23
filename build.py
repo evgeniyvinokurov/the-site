@@ -103,7 +103,7 @@ projects = [
     {"name": "bus-tickets", "tags": ["js", "markup"], "dirs": ["imgs", "css"],  "files": [
         "all.js",
         "index.html"
-    ]},
+    ], "github": True},
     {"name": "e-shop-client", "tags": ["js", "markup", "catalog", "vuejs", "canvas"], "dirs": ["assets"], "files": [
         "bundle.js",
         "index.html"
@@ -112,35 +112,21 @@ projects = [
         "/css/main.css",
         "all.js",
         "index.html"
-    ]},
-    {"name": "quest-thing", "tags": ["json", "js", "jquery"], "dirs": ["css"], "files": [
-        "all.js",
-        "index.html",
-        "index-constructor.html"
-    ]},
-    {"name": "text-animation","tags": ["jquery", "js", "markup"], "dirs": ["css"], "files": [
-        "all.js",
-        "index.html"
-    ]},
-    {"name": "basic-tetris","tags": ["js", "canvas"], "files": [
-        "tetris.js",
-        "index.html"
-    ]},
-    {"name": "users","tags": ["js", "angular", "markup"], "dirs": ["app"], "files": [], "baseUrl": "app/"},
+    ], "github": True},
+    {"name": "users","tags": ["js", "angular", "markup"], "dirs": ["app"], "files": [], "baseUrl": "app/", "github": True},
     {"name": "deezer-api-albums-php", "tags": ["php", "sqlite", "api", "sql"], "files": [], "url": "http://www.evgeniyvinokurov.byethost9.com/albums/", "github": True},
-    {"name": "roach-race", "tags": ["python", "js", "xml", "bottle", "markup"], "files": [], "url": "http://evgeniyvinokurov.pythonanywhere.com/race/"},
-    {"name": "xmla", "tags": ["python", "js", "xml", "bottle", "catalog", "markup", "tests", "docker", "import"], "files": [], "url": "https://evgeniyvinokurov.pythonanywhere.com/catalog/"},
+    {"name": "xmla", "tags": ["python", "js", "xml", "bottle", "catalog", "markup", "tests", "docker", "import"], "files": [], "url": "https://evgeniyvinokurov.pythonanywhere.com/catalog/", "github": True},
     {"name": "veggy-farm", "tags": ["python", "django", "catalog", "markup", "docker", "sqlite"], "files": [], "github": True},
-    {"name": "base-python-app-for-web", "tags": ["python", "bottle", "xml", "vuejs", "markup"], "files": [], "url": "http://evgeniyvinokurov.pythonanywhere.com/feedback/"}
+    {"name": "base-python-app-for-web", "tags": ["python", "bottle", "xml", "vuejs", "markup"], "files": [], "url": "http://evgeniyvinokurov.pythonanywhere.com/feedback/", "github": True}
 ];
 
 projectsshort = [
-    "bus-tickets", "users", "roach-race", "xmla", "veggy-farm", "quest-thing"
+    "bus-tickets", "users", "roach-race", "xmla", "veggy-farm"
 ]
  
 
 codesdir = "./common/demo/"
-projectsdir = "../projects/"
+projectsdir = "../github/"
 
 contentfrontproj = {}
 pwis = []
