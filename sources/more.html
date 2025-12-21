@@ -15,7 +15,27 @@
             d.classList.add("hide")
         }
     }
+    
+	function setRandomLightness(className) {
+		const elements = document.querySelectorAll(`.${className}`);
 
+		// Генерируем случайный серый цвет, смещённый относительно #d0d0d0
+		function generateRandomGray() {
+		    // Исходный средний уровень светлоты для #d0d0d0 составляет ~208
+		    // Добавляем небольшое смещение вверх-вниз (+/- 30)
+		    const lightnessDelta = Math.floor(Math.random() * 61) - 30; // [-30, +30]
+		    
+		    // Конечный серый цвет
+		    const finalValue = Math.max(0, Math.min(255, 208 + lightnessDelta));
+		    
+		    return `${finalValue}`;
+		}
+
+		elements.forEach(element => {
+		    const value = generateRandomGray(); // Генерация отдельного значения для каждого элемента
+		    element.style.backgroundColor = `rgb(${value}, ${value}, ${value})`;
+		});
+	}
     document.addEventListener("DOMContentLoaded", (event) => {  
 
         let innerHTML = document.body.innerHTML;
@@ -60,5 +80,7 @@
                 history.pushState({}, "", "/more.html?tag=" + this.innerHTML);
             })
         }
+        
+        setRandomLightness("tag");
     });
 </script>
