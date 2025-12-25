@@ -59,10 +59,6 @@
 
         shuffleArray(tagList);
 
-        if (tagList.indexOf(tag) !== -1) {
-            doTag(tag);
-        }
-
         let tagsEl = document.querySelector(".tags");
 
         for (let tag of tagList) {
@@ -82,5 +78,22 @@
         }
         
         setRandomLightness("tag");
+                
+        if (tagList.indexOf(tag) !== -1) {
+            doTag(tag);
+        }
+        
+        let projectsDiv = document.querySelector(".projects");
+        
+        const projectsarray = [...projects];	
+		shuffleArray(projectsarray);
+		
+		let projectsHtml = "";
+		
+		for(let p of projectsarray){
+			projectsHtml += p.outerHTML;
+		}
+		
+		projectsDiv.innerHTML = projectsHtml;
     });
 </script>

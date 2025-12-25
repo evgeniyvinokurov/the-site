@@ -100,6 +100,41 @@ tdate = datetime.datetime.utcfromtimestamp(ti_m).strftime('%Y-%m-%d')
 # CODES 
 
 projects = [
+    {"name": "roach-race", "tags": ["python", "js", "xml", "bottle", "markup"], "files": [], "url": "http://evgeniyvinokurov.pythonanywhere.com/race/"},
+    {"name": "bus-tickets", "tags": ["js", "markup"], "dirs": ["imgs", "css"],  "files": [
+        "all.js",
+        "index.html"
+    ]},
+    {"name": "dances", "tags": ["js", "markup", "ymaps", "svg", "jquery"], "dirs": [
+        "Bongos",
+        "css",
+        "fonts",
+        "imgs"
+        ], "files": [
+        "all.js",        
+        "index.html"]
+    },
+    {"name": "quest-thing", "tags": ["json", "js", "jquery"], "dirs": ["css"], "files": [
+        "all.js",
+        "index.html",
+        "index-constructor.html"
+    ]},
+    {"name": "text-animation","tags": ["jquery", "js", "markup"], "dirs": ["css"], "files": [
+        "all.js",
+        "index.html"
+    ]},
+    {"name": "basic-tetris","tags": ["js", "canvas"], "files": [
+        "tetris.js",
+        "index.html"
+    ]},
+    {"name": "random-place","tags": ["js", "ymaps"], "files": [
+        "all.js",
+        "index.html"
+    ], "dirs": ["imgs", "fonts", "css"]},
+    {"name": "get-your-song", "tags": ["php"], "files": [], "url": "http://www.evgeniyvinokurov.byethost9.com/get-your-song/"},
+    {"name": "python-scripts", "video": "true", "tags": ["python", "ffmpeg"], "files": []},
+    {"name": "story-linker", "tags": ["python", "js"], "files": []},
+    {"name": "lottery-salt-emulator", "tags": ["python", "bottle", "xml", "js"], "files": []},
     {"name": "e-shop-client", "tags": ["js", "markup", "catalog", "vuejs", "canvas"], "dirs": ["assets"], "files": [
         "bundle.js",
         "index.html"
@@ -124,12 +159,15 @@ projectsshort = [
  
 
 codesdir = "./common/demo/"
-projectsdir = "../github/"
 
 contentfrontproj = {}
 pwis = []
 
 for p in projects: 
+    if "github" in p:
+        projectsdir = "../github/"
+    else:
+        projectsdir = "../projects/"
     pwi = p
     with open(str(projectsdir) + "/" + p["name"] + "/README.md", mode="r", encoding="utf-8") as f:  
         lines = list(f)
