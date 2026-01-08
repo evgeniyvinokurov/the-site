@@ -1,0 +1,99 @@
+<script type="text/javascript">
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+
+    function doTag(tag) {
+        for (d of document.querySelectorAll("div.project")){
+            d.classList.remove("hide")
+        }
+
+        for (d of document.querySelectorAll("div.project:not(." + tag + ")")){
+            d.classList.add("hide")
+        }
+    }
+    
+	function setRandomLightness(className) {
+		const elements = document.querySelectorAll(`.${className}`);
+
+		// Генерируем случайный серый цвет, смещённый относительно #d0d0d0
+		function generateRandomGray() {
+		    // Исходный средний уровень светлоты для #d0d0d0 составляет ~208
+		    // Добавляем небольшое смещение вверх-вниз (+/- 30)
+		    const lightnessDelta = Math.floor(Math.random() * 61) - 30; // [-30, +30]
+		    
+		    // Конечный серый цвет
+		    const finalValue = Math.max(0, Math.min(255, 208 + lightnessDelta));
+		    
+		    return `${finalValue}`;
+		}
+
+		elements.forEach(element => {
+		    const value = generateRandomGray(); // Генерация отдельного значения для каждого элемента
+		    element.style.backgroundColor = `rgb(${value}, ${value}, ${value})`;
+		});
+	}
+    document.addEventListener("DOMContentLoaded", (event) => {  
+
+        let innerHTML = document.body.innerHTML;
+        document.body.innerHTML = "<img src='" + PicsService.finallyGetPicUrl().final + "' style='position:absolute;z-index:-1;'/>" + innerHTML;
+
+        const searchParams = new URLSearchParams(window.location.search);
+        let tag = searchParams.get('tag');
+
+
+        let projects = document.querySelectorAll(".project");				
+        let tagList = [];
+
+        for (let p of projects) {
+            let classNames =  p.className.split(" ")
+            for (let c of classNames) {
+                if (tagList.indexOf(c) === -1 && c !== "project") {
+                    tagList.push(c);
+                }						
+            }
+        }
+
+        shuffleArray(tagList);
+
+        let tagsEl = document.querySelector(".tags");
+
+        for (let tag of tagList) {
+            tagsEl.innerHTML += "<div class='tag'>" + tag + "</div>"
+         }
+
+        let tags = document.querySelectorAll(".tag");
+        
+        console.log(tags);
+
+        for (let t of tags) {
+            t.addEventListener("click", function(e){
+                console.log("click")
+                doTag(this.innerHTML);
+                history.pushState({}, "", "/more.html?tag=" + this.innerHTML);
+            })
+        }
+        
+        setRandomLightness("tag");
+                
+        if (tagList.indexOf(tag) !== -1) {
+            doTag(tag);
+        }
+        
+        let projectsDiv = document.querySelector(".projects");
+        
+        const projectsarray = [...projects];	
+		shuffleArray(projectsarray);
+		
+		let projectsHtml = "";
+		
+		for(let p of projectsarray){
+			projectsHtml += p.outerHTML;
+		}
+		
+		projectsDiv.innerHTML = projectsHtml;
+    });
+</script>

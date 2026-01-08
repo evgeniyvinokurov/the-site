@@ -1,0 +1,13 @@
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", (event) => {  
+
+        let innerHTML = document.body.innerHTML;
+        document.body.innerHTML = "<img src='" + PicsService.finallyGetPicUrl().final + "' style='position:absolute;z-index:-1;'/>" + innerHTML;
+
+        let oneproject = document.querySelector(".inner-brief__project");
+        let p1 = ToolsService.getRandomArrayValue(projects);
+        
+        oneproject.innerHTML = p1["htmlcodes"];
+
+    })
+</script>
